@@ -42,7 +42,6 @@ const testimonials = [
 ];
 
 export default function Home() {
-  const [dragX, setDragX] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

@@ -271,7 +271,7 @@ export default function Home() {
           {/* Bio Text Columns */}
           <div className="col-span-1 md:col-span-5 space-y-4">
             <p className="text-gray-600 leading-relaxed text-base">
-              For the past 8 years I&apos;ve been consulting as a change manager, project manager and business analyst for various clients across multiple industries from telecommunications, FMG, gaming, government and more. Specialising in digital transformations in improving business outcomes, cyber security, digital analytics and more.
+            For the past 8 years, I&apos;ve served as a consultant specialising in change management, project management, and business analysis across diverse sectors including telecommunications, FMG, gaming, and government. My expertise centers on digital transformations, focusing on enhancing business performance, strengthening cyber security, and advancing digital analytics initiatives.
             </p>
             <p className="text-sm text-gray-600">I love to travel, go to concerts, cook amazing food, explore new places and more.</p>
           </div>

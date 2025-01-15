@@ -239,9 +239,9 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-md"
+            className="text-lg"
           >
-            "{testimonials[currentIndex].quote}"
+            &ldquo;{testimonials[currentIndex].quote}&rdquo;
           </motion.blockquote>
           <motion.p
             key={currentIndex + "-name"}
@@ -289,8 +289,8 @@ export default function Home() {
           
           {/* Bio Text Columns */}
           <div className="col-span-5 space-y-4">
-            <p className="text-gray-600 leading-relaxed text-sm">
-              For the past 8 years I've been consulting as a change manager, project manager and business analyst for various clients across multiple industries from telecommunications, FMG, gaming, government and more. Specialising in digital transformations in improving business outcomes, cyber security, digital analytics and more.
+            <p className="text-gray-600 leading-relaxed">
+              For the past 7 years I&apos;ve freelanced, worked in agencies, been part of in-house design teams and more recently was a solo founding designer in a few startups.
             </p>
             <p className="text-sm text-gray-600">I love to travel, go to concerts, cook amazing food, explore new places and more.
             </p>

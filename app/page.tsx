@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen max-w-3xl mx-auto px-4">
+    <main className="max-w-5xl mx-auto px-6 overflow-x-hidden">
       {/* Profile Section */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -159,33 +159,15 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <div className="pb-4">
-          <p className="text-sm uppercase font-mono">Work</p>
-          <p className="text-sm text-gray-500">Project walkthroughs on request.</p>
-        </div>
         <motion.div 
           className="flex cursor-grab active:cursor-grabbing"
           drag="x"
           dragConstraints={{
             right: 0,
-            left: -((projects.length - 1) * (900 + 16))
+            left: -((projects.length - 1) * (1000 + 16))
           }}
           dragElastic={0.1}
-          dragTransition={{ 
-            bounceStiffness: 300, 
-            bounceDamping: 30,
-            timeConstant: 400
-          }}
-          dragMomentum={true}
-          whileDrag={{ scale: 0.98 }}
-          onDrag={(_, info) => setDragX(info.offset.x)}
-          animate={{
-            x: Math.round(dragX / (900 + 16)) * (900 + 16)
-          }}
-          transition={{
-            duration: 0.6,
-            ease: "easeInOut"
-          }}
+          dragTransition={{ bounceStiffness: 800, bounceDamping: 20 }}
         >
           {projects.map((project, index) => (
             <motion.div

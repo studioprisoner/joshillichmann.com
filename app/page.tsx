@@ -72,7 +72,7 @@ export default function Home() {
         <div className="space-y-1">
           <h1 className="text-xl font-medium font-mono">Josh Illichmann</h1>
           <p className="text-gray-600">
-            I'm a Product Designer from Melbourne, Australia and a graduate of <Link href="https://swinburne.design/">Swinburne University Design</Link> program.
+            I&apos;m a Product Designer from Melbourne, Australia and a graduate of <Link href="https://swinburne.design/">Swinburne University Design</Link> program.
           </p>
         </div>
 

@@ -91,7 +91,7 @@ export default function Home() {
           </div>
 
           {/* Work History */}
-          <div className="grid grid-cols-2 gap-8 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
             {/* Previous Work */}
           <div className="space-y-2">
             <h2 className="font-medium uppercase font-mono">Previously</h2>
@@ -190,11 +190,11 @@ export default function Home() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="flex-shrink-0 w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0"
+              className="flex-shrink-0 w-[350px] md:w-[600px] lg:w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0"
               whileHover={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="h-[500px] select-none">
+              <div className="h-[250px] md:h-[400px] lg:h-[500px] select-none">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -204,7 +204,7 @@ export default function Home() {
                   draggable="false"
                 />
               </div>
-              <div className="p-6 space-y-2 select-none">
+              <div className="p-4 md:p-6 space-y-2 select-none">
                 <h3 className="text-lg font-medium">{project.title}</h3>
                 <p className="text-gray-600 text-sm">{project.description}</p>
               </div>
@@ -239,7 +239,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg"
+            className="text-md md:text-lg"
           >
             &ldquo;{testimonials[currentIndex].quote}&rdquo;
           </motion.blockquote>
@@ -281,22 +281,21 @@ export default function Home() {
 
       {/* Bio */}
       <div className="py-12">
-        <div className="grid grid-cols-12 gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
           {/* Label Column */}
           <div className="col-span-1">
             <h2 className="text-sm font-mono">BIO</h2>
           </div>
           
           {/* Bio Text Columns */}
-          <div className="col-span-5 space-y-4">
-            <p className="text-gray-600 leading-relaxed">
-            For the past 8 years I&apos;ve been consulting as a change manager, project manager and business analyst for various clients across multiple industries from telecommunications, FMG, gaming, government and more. Specialising in digital transformations in improving business outcomes, cyber security, digital analytics and more.
+          <div className="col-span-1 md:col-span-5 space-y-4">
+            <p className="text-gray-600 leading-relaxed text-base">
+              For the past 8 years I&apos;ve been consulting as a change manager, project manager and business analyst for various clients across multiple industries from telecommunications, FMG, gaming, government and more. Specialising in digital transformations in improving business outcomes, cyber security, digital analytics and more.
             </p>
-            <p className="text-sm text-gray-600">I love to travel, go to concerts, cook amazing food, explore new places and more.
-            </p>
+            <p className="text-sm text-gray-600">I love to travel, go to concerts, cook amazing food, explore new places and more.</p>
           </div>
           
-          <div className="col-span-5 space-y-4">
+          <div className="col-span-1 md:col-span-5 space-y-4">
             <h2 className="text-sm font-mono">ELSEWHERE</h2>
             <p className="text-sm flex items-center gap-2">
               <Image 

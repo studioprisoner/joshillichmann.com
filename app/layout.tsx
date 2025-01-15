@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from 'next'
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +46,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" itemScope itemType="http://schema.org/Person">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Analytics />
+        {children}
+      </body>
     </html>
   );
 }

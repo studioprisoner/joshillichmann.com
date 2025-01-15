@@ -1,101 +1,351 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from 'react';
+
+
+const projects = [
+  {
+    title: "Gigz - iOS app for jounaling live music",
+    description: "A personal live music diary. Whether you're a casual concert-goer or a dedicated live music enthusiast, Gigz helps you preserve and celebrate your live music experiences.",
+    image: "/gigz-mock-1.png",
+  },
+  {
+    title: "Penfolds - eCommerce UX Research and Design",
+    description: "Dedication towards improving the key functionalities of Penfolds.com's e-commerce platform, resolving user interface hitches for the global routing, mini-cart, and transaction steps, thus achieving its dual objectives: evolving a more navigable browsing interface and streamlining the purchase process to amplify conversion rates.",
+    image: "/penfolds-mock-1.png",
+  },
+  {
+    title: "MChart - Visualising a healthcare landscape",
+    description: "Geospatial mapping capabilities revolutionise data visualisation for health and social care planners and professionals.",
+    image: "/mchart-mock-1.png",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Josh showcased impressive technical skills in creating a user-friendly interface. Their ability to create graphic interpretations of our navigation tool's layers was commendable.",
+    name: "Professor Luis Salvador-Carulla",
+    position: "Deputy Director",
+    company: "Health Research Institute",
+    avatar: ""  // optional
+  },
+  {
+    quote: "This is a much cleaner and user-friendly experience through these key areas of the site. The navigation, mini cart, and checkout improvements are fantastic, especially for mobile users. Honestly brilliant work",
+    name: "Grace Burke",
+    position: "Global Website Experience Manager",
+    company: "Penfolds - Treasury Wine Estates",
+    avatar: ""  // optional
+  }
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [dragX, setDragX] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <main className="min-h-screen max-w-3xl mx-auto px-4">
+      {/* Profile Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="space-y-8 py-12"
+      >
+        <Image
+          src="/josh.png"
+          alt="Profile"
+          width={80}
+          height={80}
+          className="rounded-full"
+        />
+
+        <div className="space-y-1">
+          <h1 className="text-xl font-medium font-mono">Josh Illichmann</h1>
+          <p className="text-gray-600">
+            I'm a Product Designer from Melbourne, Australia and a graduate of <Link href="https://swinburne.design/">Swinburne University Design</Link> program.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Contact Info */}
+        
+          <div className="space-y-2 text-sm">
+            <p>Send an email → <Link href="mailto:josh@studioprisoner.com">josh@studioprisoner.com</Link></p>
+            <p>Connect with me on LinkedIn → <Link href="https://www.linkedin.com/in/joshuai/">@joshuai</Link></p>
+          </div>
+
+          {/* Availability Badge */}
+          <div>
+            <span className="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm font-mono">
+              AVAILABLE FOR WORK
+            </span>
+          </div>
+
+          {/* Work History */}
+          <div className="grid grid-cols-2 gap-8 text-sm">
+            {/* Previous Work */}
+          <div className="space-y-2">
+            <h2 className="font-medium uppercase font-mono">Previously</h2>
+            <div className="space-y-1 text-gray-600">
+              <p>
+                Consultant at Sportsbet{' '}
+                <Image 
+                  src="/sb-icon.png" 
+                  alt="Sportsbet" 
+                  width={22} 
+                  height={22} 
+                  className="inline-block align-middle" 
+                />
+                {' '}transforming ways of working and Zero Trust cyber frameworks.
+              </p>
+            </div>
+          </div>
+            {/* Current Work */}
+            <div className="space-y-2">
+              <h2 className="font-medium uppercase font-mono">Currently</h2>
+              <div className="space-y-1 text-gray-600">
+                <p>
+                  Building things with Figma{' '}
+                  <Image 
+                    src="/figma-icon.png" 
+                    alt="Figma" 
+                    width={20} 
+                    height={20} 
+                    className="inline-block align-middle" 
+                  />
+                  {' '} and Cursor{' '}
+                  <Image 
+                    src="/cursor-icon.png" 
+                    alt="Cursor" 
+                    width={20} 
+                    height={20} 
+                    className="inline-block align-middle" 
+                  />
+                  {' '} 
+                </p>
+                <p>Founder of <Link href="https://gigz.app">Gigz</Link>{' '}
+                  <Image 
+                    src="/gigz-icon.png" 
+                    alt="Gigz" 
+                    width={20} 
+                    height={20} 
+                    className="inline-block align-middle" 
+                  />
+                  {' '} </p>
+              </div>
+            </div>
+
+          </div>
+          
+          <div>
+          
+        </div>
+
+      </motion.div>
+
+      {/* Projects Section */}
+      <motion.div 
+        className="py-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="pb-4">
+          <p className="text-sm uppercase font-mono">Work</p>
+          <p className="text-sm text-gray-500">Project walkthroughs on request.</p>
+        </div>
+        <motion.div 
+          className="flex cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{
+            right: 0,
+            left: -((projects.length - 1) * (900 + 16))
+          }}
+          dragElastic={0.1}
+          dragTransition={{ 
+            bounceStiffness: 300, 
+            bounceDamping: 30,
+            timeConstant: 400
+          }}
+          dragMomentum={true}
+          whileDrag={{ scale: 0.98 }}
+          onDrag={(_, info) => setDragX(info.offset.x)}
+          animate={{
+            x: Math.round(dragX / (900 + 16)) * (900 + 16)
+          }}
+          transition={{
+            duration: 0.6,
+            ease: "easeInOut"
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="flex-shrink-0 w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0"
+              whileHover={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="h-[500px] select-none">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={800}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  draggable="false"
+                />
+              </div>
+              <div className="p-6 space-y-2 select-none">
+                <h3 className="text-lg font-medium">{project.title}</h3>
+                <p className="text-gray-600 text-sm">{project.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Testimonial */}
+      <div className="py-12">
+        <div className="text-center space-y-4">
+          {testimonials[currentIndex].avatar && (
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src={testimonials[currentIndex].avatar}
+                alt={testimonials[currentIndex].name}
+                width={48}
+                height={48}
+                className="rounded-full mx-auto"
+              />
+            </motion.div>
+          )}
+          <motion.blockquote
+            key={currentIndex + "-quote"}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-md"
+          >
+            "{testimonials[currentIndex].quote}"
+          </motion.blockquote>
+          <motion.p
+            key={currentIndex + "-name"}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm text-gray-600 font-mono uppercase"
+          >
+            {testimonials[currentIndex].name}
+          </motion.p>
+          <motion.p
+            key={currentIndex + "-position"}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-xs text-gray-500"
+          >
+            {testimonials[currentIndex].position} • {testimonials[currentIndex].company}
+          </motion.p>
+        </div>
+
+        {/* Progress Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentIndex ? 'bg-gray-800' : 'bg-gray-200'
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Bio */}
+      <div className="py-12">
+        <div className="grid grid-cols-12 gap-14">
+          {/* Label Column */}
+          <div className="col-span-1">
+            <h2 className="text-sm font-mono">BIO</h2>
+          </div>
+          
+          {/* Bio Text Columns */}
+          <div className="col-span-5 space-y-4">
+            <p className="text-gray-600 leading-relaxed text-sm">
+              For the past 8 years I've been consulting as a change manager, project manager and business analyst for various clients across multiple industries from telecommunications, FMG, gaming, government and more. Specialising in digital transformations in improving business outcomes, cyber security, digital analytics and more.
+            </p>
+            <p className="text-sm text-gray-600">I love to travel, go to concerts, cook amazing food, explore new places and more.
+            </p>
+          </div>
+          
+          <div className="col-span-5 space-y-4">
+            <h2 className="text-sm font-mono">ELSEWHERE</h2>
+            <p className="text-sm flex items-center gap-2">
+              <Image 
+                src="/seek-icon.png" 
+                alt="Seek" 
+                width={20} 
+                height={20} 
+                className="inline-block" 
+              />
+              <Link href="https://www.seek.com.au/profile/joshua-illichmann-Tv6X5SP5wR">Josh Illichmann</Link>
+            </p>
+            <p className="text-sm flex items-center gap-2">
+              <Image 
+                src="/threads-icon.png" 
+                alt="Threads" 
+                width={20} 
+                height={20} 
+                className="inline-block" 
+              />
+              <Link href="https://threads.net/@studioprisoner">@studioprisoner</Link>
+            </p>
+            <p className="text-sm flex items-center gap-2">
+              <Image 
+                src="/instagram-icon.png" 
+                alt="Instagram" 
+                width={20} 
+                height={20} 
+                className="inline-block" 
+              />
+              <Link href="https://instagram.com/studioprisoner">@studioprisoner</Link>
+            </p>
+            <p className="text-sm flex items-center gap-2">
+              <Image 
+                src="/lastfm-icon.png" 
+                alt="Last.fm" 
+                width={20} 
+                height={20} 
+                className="inline-block" 
+              />
+              <Link href="https://lastfm.com/user/studioprisoner">/studioprisoner</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-8 text-sm text-gray-500 space-y-4 font-mono">
+        <p>© {new Date().getFullYear()}</p>
       </footer>
-    </div>
+    </main>
   );
 }

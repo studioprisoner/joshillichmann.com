@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 
 const projects = [
@@ -158,40 +165,32 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <motion.div 
-          className="flex cursor-grab active:cursor-grabbing"
-          drag="x"
-          dragConstraints={{
-            right: 0,
-            left: -((projects.length - 1) * (1000 + 16))
-          }}
-          dragElastic={0.1}
-          dragTransition={{ bounceStiffness: 800, bounceDamping: 20 }}
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="flex-shrink-0 w-[350px] md:w-[600px] lg:w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0"
-              whileHover={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="h-[250px] md:h-[400px] lg:h-[500px] select-none">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={800}
-                  height={400}
-                  className="w-full h-full object-cover"
-                  draggable="false"
-                />
-              </div>
-              <div className="p-4 md:p-6 space-y-2 select-none">
-                <h3 className="text-lg font-medium">{project.title}</h3>
-                <p className="text-gray-600 text-sm">{project.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <Carousel>
+          <CarouselContent>
+            {projects.map((project, index) => (
+              <CarouselItem key={index}>
+                <div className="flex-shrink-0 w-[350px] md:w-[600px] lg:w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0">
+                  <div className="h-[250px] md:h-[400px] lg:h-[500px] select-none">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={800}
+                      height={400}
+                      className="w-full h-full object-cover"
+                      draggable="false"
+                    />
+                  </div>
+                  <div className="p-4 md:p-6 space-y-2 select-none">
+                    <h3 className="text-lg font-medium">{project.title}</h3>
+                    <p className="text-gray-600 text-sm">{project.description}</p>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </motion.div>
 
       {/* Testimonial */}

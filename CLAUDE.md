@@ -16,7 +16,7 @@ This is a Next.js 15 portfolio website built with the App Router architecture. T
 ### Key Technology Stack
 
 - **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS with custom design system
+- **Styling**: Tailwind CSS v4.1.12 with modern CSS-based configuration
 - **UI Components**: Radix UI primitives with custom Tailwind styling
 - **Animations**: Framer Motion for page transitions and interactions
 - **Typography**: Inter font from next/font

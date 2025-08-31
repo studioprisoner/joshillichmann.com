@@ -10,7 +10,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const projects = [
   {
@@ -60,6 +62,8 @@ const testimonials = [
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -68,6 +72,21 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const onSelect = () => {
+      setCurrentSlide(carouselApi.selectedScrollSnap());
+    };
+
+    carouselApi.on('select', onSelect);
+    onSelect(); // Set initial slide
+
+    return () => {
+      carouselApi?.off('select', onSelect);
+    };
+  }, [carouselApi]);
 
   return (
     <main className="max-w-5xl mx-auto px-6 overflow-x-hidden">
@@ -143,18 +162,10 @@ export default function Home() {
             <h2 className="font-medium uppercase font-mono">Currently</h2>
             <div className="space-y-1 text-gray-600">
               <p>
-                Building things with Figma{" "}
+                Building products with Claude Code{" "}
                 <Image
-                  src="/figma-icon.png"
-                  alt="Figma"
-                  width={20}
-                  height={20}
-                  className="inline-block align-middle"
-                />{" "}
-                and Cursor{" "}
-                <Image
-                  src="/cursor-icon.png"
-                  alt="Cursor"
+                  src="/anthropic.png"
+                  alt="Anthropic"
                   width={20}
                   height={20}
                   className="inline-block align-middle"
@@ -165,6 +176,16 @@ export default function Home() {
                 <Image
                   src="/gigz-icon.png"
                   alt="Gigz"
+                  width={20}
+                  height={20}
+                  className="inline-block align-middle"
+                />{" "}
+              </p>
+              <p>
+                Founder of <Link href="https://convertiq.cloud">ConvertIQ</Link>{" "}
+                <Image
+                  src="/convertiq.png"
+                  alt="ConvertIQ"
                   width={20}
                   height={20}
                   className="inline-block align-middle"
@@ -184,11 +205,25 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Carousel>
-          <CarouselContent>
+        <Carousel 
+          className="w-full max-w-5xl mx-auto"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
+            }),
+          ]}
+          setApi={setCarouselApi}
+        >
+          <CarouselContent className="items-stretch">
             {projects.map((project, index) => (
-              <CarouselItem key={index}>
-                <div className="flex-shrink-0 w-[350px] md:w-[600px] lg:w-[800px] bg-gray-100 rounded-xl overflow-hidden mr-4 first:ml-0">
+              <CarouselItem key={index} className="basis-11/12 sm:basis-4/5 lg:basis-3/4">
+                <div className="bg-gray-100 rounded-xl overflow-hidden h-full flex flex-col">
                   <div className="h-[250px] md:h-[400px] lg:h-[500px] select-none">
                     <Image
                       src={project.image}
@@ -199,9 +234,9 @@ export default function Home() {
                       draggable="false"
                     />
                   </div>
-                  <div className="p-4 md:p-6 space-y-2 select-none">
+                  <div className="p-4 md:p-6 space-y-2 select-none flex-1 flex flex-col">
                     <h3 className="text-lg font-medium">{project.title}</h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 text-sm flex-1">
                       {project.description}
                     </p>
                   </div>
@@ -209,9 +244,23 @@ export default function Home() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="-left-4 md:-left-12" />
+          <CarouselNext className="-right-4 md:-right-12" />
         </Carousel>
+        
+        {/* Carousel Progress Dots */}
+        <div className="flex justify-center gap-2 mt-6">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentSlide ? "bg-gray-800" : "bg-gray-200"
+              }`}
+              onClick={() => carouselApi?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </motion.div>
 
       {/* Testimonial */}

@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from 'next'
 import { Analytics } from "@vercel/analytics/react"
+import { OpenPanelComponent } from "@openpanel/nextjs"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +48,10 @@ export default function RootLayout({
   return (
     <html lang="en" itemScope itemType="http://schema.org/Person">
       <body className={inter.className}>
-      <Analytics />
+        <Analytics />
+        <OpenPanelComponent 
+          clientId="eeb952be-b511-48b4-8537-5ff759b98280"
+        />
         {children}
       </body>
     </html>

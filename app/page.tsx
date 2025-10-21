@@ -20,12 +20,14 @@ const projects = [
     description:
       "A personal live music diary. Whether you're a casual concert-goer or a dedicated live music enthusiast, Gigz helps you preserve and celebrate your live music experiences.",
     image: "/gigz-mock-1.png",
+    link: "https://gigz.app",
   },
   {
     title: "ConvertIQ - Turn Your Website Into a Conversion Machine",
     description:
       "Get data-driven insights and actionable recommendations that were once only available to enterprise companies. Transform your small business website with AI-powered analysis.",
     image: "/reports.png",
+    link: "https://www.convertiq.cloud",
   },
   {
     title: "Penfolds - eCommerce UX Research and Design",
@@ -38,6 +40,14 @@ const projects = [
     description:
       "Geospatial mapping capabilities revolutionise data visualisation for health and social care planners and professionals.",
     image: "/mchart-mock-1.png",
+    link: "https://mchart.ai",
+  },
+  {
+    title: "In Asia Advantage - Design & Build",
+    description:
+      "In Asia Advantage provides Sourcing & Supply Management Solutions In China. I worked with the director Ross Matthews in designing a responsive design in line with their vision.",
+    image: "/inasiaadvantage.png",
+    link: "https://www.inasiaadvantage.com",
   },
 ];
 
@@ -239,6 +249,16 @@ export default function Home() {
                     <p className="text-gray-600 text-sm flex-1">
                       {project.description}
                     </p>
+                    {project.link && (
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors inline-flex items-center gap-1 mt-2"
+                      >
+                        VIEW PROJECT →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </CarouselItem>

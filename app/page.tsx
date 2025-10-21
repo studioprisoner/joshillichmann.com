@@ -40,6 +40,14 @@ const projects = [
     description:
       "Geospatial mapping capabilities revolutionise data visualisation for health and social care planners and professionals.",
     image: "/mchart-mock-1.png",
+    link: "https://mchart.ai",
+  },
+  {
+    title: "In Asia Advantage - Design & Build",
+    description:
+      "In Asia Advantage provides Sourcing & Supply Management Solutions In China. I worked with the director Ross Matthews in designing a responsive design in line with their vision.",
+    image: "/inasiaadvantage.png",
+    link: "https://www.inasiaadvantage.com",
   },
 ];
 

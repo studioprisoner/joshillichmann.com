@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectsCarousel, { type Project } from '../components/ProjectsCarousel';
+import TestimonialsRotator, { type Testimonial } from '../components/TestimonialsRotator';
+
+const projects: Project[] = [
+  {
+    title: 'Gigz - iOS app for jounaling live music',
+    description:
+      "A personal live music diary. Whether you're a casual concert-goer or a dedicated live music enthusiast, Gigz helps you preserve and celebrate your live music experiences.",
+    image: '/gigz-mock-1.png',
+    link: 'https://gigz.app',
+  },
+  {
+    title: 'ConvertIQ - Turn Your Website Into a Conversion Machine',
+    description:
+      'Get data-driven insights and actionable recommendations that were once only available to enterprise companies. Transform your small business website with AI-powered analysis.',
+    image: '/reports.png',
+    link: 'https://www.convertiq.cloud',
+  },
+  {
+    title: 'Penfolds - eCommerce UX Research and Design',
+    description:
+      "Dedication towards improving the key functionalities of Penfolds.com's e-commerce platform, resolving user interface hitches for the global routing, mini-cart, and transaction steps, thus achieving its dual objectives: evolving a more navigable browsing interface and streamlining the purchase process to amplify conversion rates.",
+    image: '/penfolds-mock-1.png',
+  },
+  {
+    title: 'MChart - Visualising a healthcare landscape',
+    description:
+      'Geospatial mapping capabilities revolutionise data visualisation for health and social care planners and professionals.',
+    image: '/mchart-mock-1.png',
+    link: 'https://mchart.ai',
+  },
+  {
+    title: 'In Asia Advantage - Design & Build',
+    description:
+      'In Asia Advantage provides Sourcing & Supply Management Solutions In China. I worked with the director Ross Matthews in designing a responsive design in line with their vision.',
+    image: '/inasiaadvantage.png',
+    link: 'https://www.inasiaadvantage.com',
+  },
+];
+
+const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Josh showcased impressive technical skills in creating a user-friendly interface. Their ability to create graphic interpretations of our navigation tool's layers was commendable.",
+    name: 'Professor Luis Salvador-Carulla',
+    position: 'Deputy Director',
+    company: 'Health Research Institute',
+    avatar: '',
+  },
+  {
+    quote:
+      'This is a much cleaner and user-friendly experience through these key areas of the site. The navigation, mini cart, and checkout improvements are fantastic, especially for mobile users. Honestly brilliant work',
+    name: 'Grace Burke',
+    position: 'Global Website Experience Manager',
+    company: 'Penfolds - Treasury Wine Estates',
+    avatar: '',
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<BaseLayout>
+  <main class="max-w-5xl mx-auto px-6 overflow-x-hidden">
+    <div class="space-y-8 py-12 animate-fade-in-up">
+      <img
+        src="/josh.png"
+        alt="Profile"
+        width="80"
+        height="80"
+        class="rounded-full"
+      />
+
+      <div class="space-y-1">
+        <h1 class="text-xl font-medium font-mono">Josh Illichmann</h1>
+        <p class="text-gray-600">
+          I&apos;m a Product Designer from Melbourne, Australia and a graduate of{' '}
+          <a href="https://swinburne.design/">Swinburne University Design</a> program.
+        </p>
+      </div>
+
+      <div class="space-y-2 text-sm">
+        <p>
+          Send an email →{' '}
+          <a href="mailto:josh@studioprisoner.com">josh@studioprisoner.com</a>
+        </p>
+        <p>
+          Connect with me on LinkedIn →{' '}
+          <a href="https://www.linkedin.com/in/joshuai/">@joshuai</a>
+        </p>
+      </div>
+
+      <div>
+        <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm font-mono">
+          AVAILABLE FOR WORK
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+        <div class="space-y-2">
+          <h2 class="font-medium uppercase font-mono">Previously</h2>
+          <div class="space-y-1 text-gray-600">
+            <p>
+              Consultant at Sportsbet{' '}
+              <img
+                src="/sb-icon.png"
+                alt="Sportsbet"
+                width="22"
+                height="22"
+                class="inline-block align-middle"
+              />{' '}
+              transforming ways of working and Zero Trust cyber frameworks.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h2 class="font-medium uppercase font-mono">Currently</h2>
+          <div class="space-y-1 text-gray-600">
+            <p>
+              Building products with Claude Code{' '}
+              <img
+                src="/anthropic.png"
+                alt="Anthropic"
+                width="20"
+                height="20"
+                class="inline-block align-middle"
+              />
+            </p>
+            <p>
+              Founder of <a href="https://gigz.app">Gigz</a>{' '}
+              <img
+                src="/gigz-icon.png"
+                alt="Gigz"
+                width="20"
+                height="20"
+                class="inline-block align-middle"
+              />
+            </p>
+            <p>
+              Founder of <a href="https://convertiq.cloud">ConvertIQ</a>{' '}
+              <img
+                src="/convertiq.png"
+                alt="ConvertIQ"
+                width="20"
+                height="20"
+                class="inline-block align-middle"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ProjectsCarousel projects={projects} client:visible />
+
+    <TestimonialsRotator testimonials={testimonials} client:visible />
+
+    <div class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1">
+          <h2 class="text-sm font-mono">BIO</h2>
+        </div>
+
+        <div class="col-span-1 md:col-span-5 space-y-4">
+          <p class="text-gray-600 leading-relaxed text-base">
+            For the past 8 years, I&apos;ve served as a consultant specialising in
+            change management, project management, and business analysis across diverse
+            sectors including telecommunications, FMG, gaming, and government. My
+            expertise centers on digital transformations, focusing on enhancing business
+            performance, strengthening cyber security, and advancing digital analytics
+            initiatives.
+          </p>
+        </div>
+
+        <div class="col-span-1 md:col-span-5 space-y-4">
+          <h2 class="text-sm font-mono">ELSEWHERE</h2>
+          <p class="text-sm flex items-center gap-2">
+            <img src="/seek-icon.png" alt="Seek" width="20" height="20" class="inline-block" />
+            <a href="https://www.seek.com.au/profile/joshua-illichmann-Tv6X5SP5wR">
+              Josh Illichmann
+            </a>
+          </p>
+          <p class="text-sm flex items-center gap-2">
+            <img src="/threads-icon.png" alt="Threads" width="20" height="20" class="inline-block" />
+            <a href="https://threads.net/@studioprisoner">@studioprisoner</a>
+          </p>
+          <p class="text-sm flex items-center gap-2">
+            <img src="/instagram-icon.png" alt="Instagram" width="20" height="20" class="inline-block" />
+            <a href="https://instagram.com/studioprisoner">@studioprisoner</a>
+          </p>
+          <p class="text-sm flex items-center gap-2">
+            <img src="/lastfm-icon.png" alt="Last.fm" width="20" height="20" class="inline-block" />
+            <a href="https://lastfm.com/user/studioprisoner">/studioprisoner</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-8 text-sm text-gray-500 space-y-4 font-mono">
+      <p>© {year}</p>
+    </footer>
+  </main>
+</BaseLayout>

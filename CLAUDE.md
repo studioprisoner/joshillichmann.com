@@ -4,67 +4,42 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- `npm run dev` - Start development server with Turbopack (opens at http://localhost:3000)
-- `npm run build` - Build the application for production
-- `npm run start` - Start the production server
-- `npm run lint` - Run ESLint to check code quality
+- `npm run dev` - Start Astro dev server (http://localhost:4321)
+- `npm run build` - Build the static site to `dist/`
+- `npm run preview` - Serve the built site locally
 
 ## Project Architecture
 
-This is a Next.js 15 portfolio website built with the App Router architecture. The site showcases Josh Illichmann's product design work and professional background.
+Portfolio site built with Astro 5 + React islands, deployed as static files to Cloudflare Pages.
 
 ### Key Technology Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS v4.1.12 with modern CSS-based configuration
-- **UI Components**: Radix UI primitives with custom Tailwind styling
-- **Animations**: Framer Motion for page transitions and interactions
-- **Typography**: Inter font from next/font
-- **Analytics**: Vercel Analytics
-- **Development**: Turbopack for fast development builds
+- **Framework**: Astro 5 (static output, no SSR adapter)
+- **Interactive islands**: React 19 via `@astrojs/react`
+- **Styling**: Tailwind CSS v4 via `@tailwindcss/vite` (CSS-based config in `src/styles/global.css`)
+- **UI components**: Radix UI primitives (Slot) + shadcn-style components
+- **Animations**: Framer Motion inside React islands
+- **Carousel**: `embla-carousel-react` + `embla-carousel-autoplay`
+- **Typography**: Inter via `@fontsource/inter`
+- **Icons**: `lucide-react`
 
 ### Project Structure
 
-- `app/` - Next.js app router pages and layouts
-  - `page.tsx` - Main portfolio page with profile, projects carousel, testimonials
-  - `layout.tsx` - Root layout with metadata and analytics
-  - `globals.css` - Global styles and CSS variables
-- `components/ui/` - Reusable UI components following shadcn/ui patterns
-  - `button.tsx` - Button component with variants using class-variance-authority
-  - `carousel.tsx` - Project showcase carousel using embla-carousel-react
-- `lib/utils.ts` - Utility functions (likely includes cn utility for className merging)
-- `public/` - Static assets including project mockups, icons, and images
+- `src/pages/index.astro` - Homepage; static shell + two React islands.
+- `src/layouts/BaseLayout.astro` - `<html>`/`<head>` with metadata, font imports, global CSS.
+- `src/components/ProjectsCarousel.tsx` - React island, hydrated with `client:visible`.
+- `src/components/TestimonialsRotator.tsx` - React island, hydrated with `client:visible`.
+- `src/components/ui/{button,carousel}.tsx` - Shared React primitives used by islands.
+- `src/lib/utils.ts` - `cn()` helper (clsx + tailwind-merge).
+- `src/styles/global.css` - Tailwind entrypoint, theme tokens, custom utilities.
+- `public/` - Static assets served as-is at the site root (images, favicon, og-image).
 
-### Design System
+### Islands architecture
 
-The site uses a custom design system built on Tailwind CSS:
-- CSS custom properties for theming (defined in globals.css)
-- Consistent spacing and typography using Tailwind utilities
-- Monospace font for labels and headings
-- Custom color palette with semantic naming
+The page renders as static HTML with zero JS by default. React is only hydrated for the two interactive sections (carousel, testimonials), both using `client:visible` so their JS loads lazily when they scroll into view. The profile section's entrance animation is plain CSS (`.animate-fade-in-up` in `global.css`) — no React runtime needed.
 
-### Content Architecture
+When adding new interactivity, prefer: (1) static HTML, (2) CSS animation, (3) small `<script>` block in `.astro`, (4) React island only when state + lifecycle are needed.
 
-The main page contains several key sections:
-1. **Profile Section** - Introduction with availability status and contact info
-2. **Work History** - Previous and current roles with company icons
-3. **Projects Carousel** - Showcases portfolio work with descriptions
-4. **Testimonials** - Auto-rotating client feedback with progress indicators
-5. **Bio Section** - Detailed background and external links
-6. **Footer** - Copyright and minimal branding
+### Deployment
 
-### Component Patterns
-
-- Uses client-side components (`"use client"`) for interactive elements
-- Framer Motion for staggered animations and transitions
-- Image optimization with Next.js Image component
-- Responsive design with mobile-first approach
-- Semantic HTML structure with proper accessibility considerations
-
-### Styling Conventions
-
-- Tailwind utility classes for styling
-- Responsive breakpoints: sm, md, lg
-- Custom color system using CSS custom properties
-- Font variations: Inter (body), monospace (headings/labels)
-- Consistent spacing scale using Tailwind's spacing system
+Cloudflare Pages with Git integration; framework preset = Astro, build command `npm run build`, output `dist`. Analytics via Cloudflare Web Analytics (injected at the edge, no code change). No `wrangler.toml`, no adapter — pure static output.

@@ -1,39 +1,35 @@
 {
   "name": "joshillichmann.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@openpanel/nextjs": "^1.0.8",
+    "@astrojs/react": "^4.2.1",
+    "@fontsource/inter": "^5.1.0",
     "@radix-ui/react-slot": "^1.1.2",
-    "@vercel/analytics": "^1.4.1",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.2.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^11.18.0",
     "lucide-react": "^0.471.2",
-    "next": "15.1.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.1.12",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.4",
-    "postcss": "^8",
-    "tailwindcss": "^4.1.12",
     "typescript": "^5"
   }
 }

@@ -15,6 +15,7 @@ export interface Project {
   description: string;
   image: string;
   link?: string;
+  caseStudy?: string;
 }
 
 interface Props {
@@ -84,15 +85,27 @@ export default function ProjectsCarousel({ projects }: Props) {
                   <p className="text-gray-600 text-sm flex-1">
                     {project.description}
                   </p>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors inline-flex items-center gap-1 mt-2"
-                    >
-                      VIEW PROJECT →
-                    </a>
+                  {(project.link || project.caseStudy) && (
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 mt-2">
+                      {project.caseStudy && (
+                        <a
+                          href={project.caseStudy}
+                          className="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                        >
+                          READ CASE STUDY →
+                        </a>
+                      )}
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                        >
+                          VIEW PROJECT →
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

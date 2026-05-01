@@ -1,0 +1,610 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const year = new Date().getFullYear();
+
+const meta = [
+  { label: 'Role', value: 'Solo Product Designer & Developer' },
+  { label: 'Timeline', value: '2024–2025' },
+  { label: 'Platform', value: 'iOS (Live on the App Store)' },
+];
+
+const alternatives = [
+  {
+    method: 'Instagram grid/stories',
+    strengths: 'Visual, social proof',
+    weaknesses: 'Not searchable, stories expire, no setlist data',
+  },
+  {
+    method: 'Notes app',
+    strengths: 'Quick, always available',
+    weaknesses: 'No structure, no photos, hard to browse',
+  },
+  {
+    method: 'Spreadsheets',
+    strengths: 'Structured, sortable',
+    weaknesses: 'Ugly, no emotional connection, no images',
+  },
+  {
+    method: 'Setlist.fm',
+    strengths: 'Great setlist data',
+    weaknesses: 'Not a personal journal, community-focused not me-focused',
+  },
+  {
+    method: 'Memory alone',
+    strengths: 'Zero effort',
+    weaknesses: 'Unreliable — details fade fast',
+  },
+];
+---
+
+<BaseLayout
+  title="Gigz — A Concert Journaling App for Music Fans · Josh Illichmann"
+  description="Case study: designing and building Gigz, an iOS concert journaling app for music fans. Card-based timeline, setlist integration, photo personalisation."
+>
+  <main class="max-w-5xl mx-auto px-6 overflow-x-hidden">
+    <div class="space-y-12 py-12 animate-fade-in-up">
+      <!-- Back link + profile -->
+      <div class="space-y-6">
+        <a
+          href="/"
+          class="text-sm font-mono text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-2"
+        >
+          ← BACK
+        </a>
+        <div class="flex items-center gap-3">
+          <img
+            src="/gigz-icon.png"
+            alt="Gigz"
+            width="40"
+            height="40"
+            class="rounded-lg"
+          />
+          <span class="text-sm font-mono text-gray-600 uppercase">Case Study</span>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <header class="space-y-6">
+        <h1 class="text-3xl md:text-4xl font-medium font-mono leading-tight">
+          Gigz — A Concert Journaling App for Music Fans
+        </h1>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+          How do you help music fans preserve and revisit their concert history —
+          without making it feel like a chore?
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-sm">
+          {
+            meta.map((item) => (
+              <div class="space-y-1">
+                <h2 class="font-medium uppercase font-mono text-xs">{item.label}</h2>
+                <p class="text-gray-600">{item.value}</p>
+              </div>
+            ))
+          }
+        </div>
+      </header>
+
+      <!-- Hero image -->
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/gigz-mock-1.png"
+          alt="Gigz iOS app mockup"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- The Problem -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">THE PROBLEM</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            Music fans go to dozens, sometimes hundreds of shows over their lifetime.
+            But most have no good way to remember them.
+          </p>
+          <p>
+            Think about it — what was that band you saw at The Corner Hotel in 2008?
+            Who opened for them? What songs did they play? What did it feel like?
+          </p>
+          <p>
+            Right now, people cobble together workarounds: scrolling through old
+            Instagram posts, saving Stories to highlights, keeping scattered notes in
+            their phone, or maintaining spreadsheets. None of these are designed for
+            the job. They&apos;re fragile, disconnected, and they don&apos;t capture the
+            richness of a live music experience.
+          </p>
+          <p>I wanted to build something that did.</p>
+          <p>
+            <span class="text-gray-900 font-medium">The insight was twofold:</span>{' '}
+            this started as a personal pain point — I&apos;m getting older and didn&apos;t
+            want to forget the shows from my early years — but the more I looked into
+            it, the more I saw a gap. There was no dedicated, thoughtfully designed
+            tool for concert journaling that treated the experience with the care it
+            deserved.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Target Users -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">TARGET USERS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>Two overlapping groups:</p>
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <h3 class="text-gray-900 font-medium">The Nostalgic Fan</h3>
+              <p>
+                Someone who&apos;s been going to gigs for years or decades and wants
+                a way to look back. They might remember the headliner but not the
+                support act, the venue but not the date. They want to reconstruct
+                and preserve their concert history.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-gray-900 font-medium">The Active Tracker</h3>
+              <p>
+                Someone who goes to shows regularly and wants to log them as they
+                happen. They care about setlists, venues, and building a visual
+                record of their music life over time.
+              </p>
+            </div>
+          </div>
+          <p>
+            Both groups share a common need: a single, beautiful place to keep their
+            concert memories — something that feels more intentional than a notes
+            app and more personal than a social feed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Existing Alternatives -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">LANDSCAPE</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            Before designing, I mapped how people were currently solving this
+            problem:
+          </p>
+
+          <div class="overflow-x-auto -mx-6 px-6">
+            <table class="w-full text-sm border-collapse min-w-[600px]">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-3 pr-4 font-mono uppercase text-xs text-gray-900 font-medium">
+                    Method
+                  </th>
+                  <th class="text-left py-3 px-4 font-mono uppercase text-xs text-gray-900 font-medium">
+                    Strengths
+                  </th>
+                  <th class="text-left py-3 pl-4 font-mono uppercase text-xs text-gray-900 font-medium">
+                    Weaknesses
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  alternatives.map((row) => (
+                    <tr class="border-b border-gray-100 align-top">
+                      <td class="py-3 pr-4 text-gray-900 font-medium">
+                        {row.method}
+                      </td>
+                      <td class="py-3 px-4 text-gray-600">{row.strengths}</td>
+                      <td class="py-3 pl-4 text-gray-600">{row.weaknesses}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            The key gap: nothing combined{' '}
+            <span class="text-gray-900 font-medium">personal journaling</span>{' '}
+            (my photos, my memories) with{' '}
+            <span class="text-gray-900 font-medium">structured music data</span>{' '}
+            (setlists, venues, dates) in a way that was easy to use and beautiful
+            to look through.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">DESIGN PROCESS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-10 text-base text-gray-600 leading-relaxed">
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Information architecture</h3>
+            <p>
+              The core question was: what&apos;s the right mental model for a
+              concert journal?
+            </p>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900">List-based</span> (like a notes app) —
+                too utilitarian, no visual delight
+              </li>
+              <li>
+                <span class="text-gray-900">Calendar-based</span> — good for active
+                trackers but bad for retroactive logging
+              </li>
+              <li>
+                <span class="text-gray-900">Card-based timeline</span> — visual,
+                scannable, grouped naturally by time
+              </li>
+            </ul>
+            <p>
+              I landed on{' '}
+              <span class="text-gray-900 font-medium">
+                a card-based timeline grouped by year
+              </span>
+              . Each card shows the artist, venue, date, and a cover photo —
+              giving users an immediate visual anchor for each memory.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">The timeline scaling challenge</h3>
+            <p>This was the biggest design challenge in the project.</p>
+            <p>
+              A card-based timeline works beautifully when someone has logged 10–20
+              shows. But what happens when a power user has logged 200+ shows
+              across 15 years?
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">The problem:</span> If every
+              show gets a full-size card regardless of volume, users with rich
+              histories would face endless scrolling. But if cards are too
+              compressed, you lose the visual impact that makes the journal feel
+              personal.
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">My approach:</span> adaptive
+              card density thresholds based on the number of shows within a year
+              grouping:
+            </p>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900">Low volume (1–5 shows/year):</span>{' '}
+                Full-size cards with large cover photos — maximise the visual
+                storytelling
+              </li>
+              <li>
+                <span class="text-gray-900">Medium volume (6–15 shows/year):</span>{' '}
+                Compact cards with smaller images — still visually rich but more
+                scannable
+              </li>
+              <li>
+                <span class="text-gray-900">High volume (16+ shows/year):</span>{' '}
+                Condensed list-style entries within the year group — prioritise
+                browsability, with the option to expand
+              </li>
+            </ul>
+            <p>
+              This meant the timeline could scale naturally. Someone logging their
+              first year of gigs gets a rich, photo-forward experience. A veteran
+              who&apos;s been to 300 shows gets something they can actually
+              navigate.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Setlist integration</h3>
+            <p>
+              Setlists are a huge part of the concert memory — hearing that one
+              song live is often the defining moment. I integrated setlist data so
+              users could see (or add) what was played at each show.
+            </p>
+            <p>
+              The challenge here was data quality. Setlist APIs (Setlist.fm) have
+              great coverage for major acts but patchy data for smaller venues and
+              local scenes. I designed the feature so that:
+            </p>
+            <ol class="space-y-2 list-decimal pl-5">
+              <li>Setlist data auto-populates when available</li>
+              <li>Users can manually add or edit setlists when it&apos;s missing</li>
+              <li>
+                The UI doesn&apos;t feel broken or empty when there&apos;s no
+                setlist — it gracefully degrades
+              </li>
+            </ol>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Onboarding & authentication</h3>
+            <p>
+              Through TestFlight testing with real users, I learned an important
+              lesson about authentication.
+            </p>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Original design:</span>{' '}
+                Sign in with Apple + OTP via SMS
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Problem discovered:</span>{' '}
+                Some users on certain carriers weren&apos;t receiving the SMS
+                codes reliably. This was a hard blocker — users literally
+                couldn&apos;t get into the app.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Decision:</span> I removed
+                SMS OTP entirely and switched to email-based OTP. Less flashy, but
+                universally reliable.
+              </li>
+            </ul>
+            <p>
+              The lesson: don&apos;t let a &ldquo;nice to have&rdquo;
+              authentication method create a &ldquo;can&apos;t get in&rdquo;
+              experience.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">
+              Photo management & cover personalisation
+            </h3>
+            <p>
+              Users can upload photos for each concert — up to 5 per show. This
+              limit was a deliberate constraint driven by storage costs, but I
+              framed it as a design choice: it encourages users to pick their
+              best, most meaningful photos rather than dumping their entire camera
+              roll.
+            </p>
+            <p>
+              A key personalisation feature: users can choose which photo becomes
+              the <span class="text-gray-900 font-medium">cover image</span> for a
+              show&apos;s card in the timeline. This means two users who attended
+              the same concert will have completely different-looking journals.
+              The cover photo transforms the card from &ldquo;I went to this
+              show&rdquo; to &ldquo;this is MY memory of this show.&rdquo;
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Design Decisions -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">DECISIONS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-8 text-base text-gray-600 leading-relaxed">
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What I built</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Concert journaling with card-based timeline
+                </span>{' '}
+                — the core experience, grouped by year with adaptive density
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Setlist tracking & integration
+                </span>{' '}
+                — auto-populated where possible, manually editable where not
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Photo uploads with cover photo personalisation
+                </span>{' '}
+                — up to 5 photos per show, user-selected cover
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Venue database & search</span>{' '}
+                — powered by multiple APIs (MusicBrainz, OpenStreetMap) for
+                comprehensive coverage
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What I intentionally left out</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Social features</span> —
+                No sharing, no friends list, no public profiles. A deliberate V1
+                scoping decision. The journaling experience needed to be solid
+                before adding social layers. Adding social too early risks turning
+                a personal journal into a performance.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Discovery / recommendations
+                </span>{' '}
+                — The app is about YOUR history, not suggesting new shows. Scope
+                control.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Unlimited photo uploads
+                </span>{' '}
+                — Capped at 5 per show for storage cost management, but also
+                because constraints often improve the end result.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes & Reflections -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">OUTCOMES</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-8 text-base text-gray-600 leading-relaxed">
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What shipped</h3>
+            <p>
+              Gigz is{' '}
+              <a
+                href="https://gigz.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-900 font-medium underline"
+              >
+                live on the App Store
+              </a>{' '}
+              — a fully functional concert journaling app that lets music fans
+              log, revisit, and personalise their concert history.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What I learned</h3>
+            <ul class="space-y-3 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Constraints are design tools.
+                </span>{' '}
+                The 5-photo limit and the decision to cut social features
+                weren&apos;t just cost-saving measures — they sharpened the
+                product&apos;s identity. Gigz is a personal journal, and every
+                decision reinforced that.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Test authentication early and broadly.
+                </span>{' '}
+                The SMS OTP issue could have been a launch blocker if I
+                hadn&apos;t caught it in TestFlight. Auth is infrastructure, but
+                it&apos;s also a UX surface.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Scaling UX matters from day one.
+                </span>{' '}
+                The timeline density challenge wasn&apos;t a &ldquo;nice to
+                have&rdquo; — it was the difference between an app that works for
+                casual users and one that works for everyone.
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What&apos;s next</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                Exploring social features (sharing individual show cards, comparing
+                concert history with friends)
+              </li>
+              <li>
+                Richer data visualisation (concert stats, venue maps, genre
+                breakdowns over time)
+              </li>
+              <li>Expanded venue and artist database coverage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Artifacts -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">ARTIFACTS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <figure class="space-y-2">
+              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
+                <img
+                  src="/userflows-gigz.png"
+                  alt="Gigz user flows diagram"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                User flows
+              </figcaption>
+            </figure>
+            <figure class="space-y-2">
+              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
+                <img
+                  src="/wireframes-gigz.png"
+                  alt="Gigz wireframes"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                Wireframes
+              </figcaption>
+            </figure>
+            <figure class="space-y-2">
+              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
+                <img
+                  src="/ui-design-gigz.png"
+                  alt="Gigz UI design in Figma"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                UI design (Figma)
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="py-12">
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-xl font-medium font-mono">More projects</h2>
+          <p class="text-gray-600 text-sm">
+            Browse the rest of my work or get in touch.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4 text-sm">
+          <a
+            href="/"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            ← BACK TO HOME
+          </a>
+          <a
+            href="https://gigz.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            VISIT GIGZ →
+          </a>
+          <a
+            href="mailto:josh@studioprisoner.com"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            EMAIL ME →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 text-sm text-gray-500 space-y-4 font-mono">
+      <p>Designed and built by Josh · 2024–2025</p>
+      <p>© {year}</p>
+    </footer>
+  </main>
+</BaseLayout>

@@ -1,0 +1,709 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const year = new Date().getFullYear();
+
+const meta = [
+  { label: 'Role', value: 'Solo Product Designer & Developer' },
+  { label: 'Timeline', value: '~10 days · 130+ commits' },
+  { label: 'Platform', value: 'Web SaaS (Live)' },
+];
+
+const screenshots = [
+  {
+    src: '/convertiq/convertiq_dashboard.png',
+    alt: 'ConvertIQ dashboard',
+    caption: 'Dashboard',
+  },
+  {
+    src: '/convertiq/convertiq_newscan.png',
+    alt: 'ConvertIQ new scan setup',
+    caption: 'New scan',
+  },
+  {
+    src: '/convertiq/convertiq_reports.png',
+    alt: 'ConvertIQ results report with scores, insights and recommendations',
+    caption: 'Reports',
+  },
+  {
+    src: '/convertiq/convertiq_account.png',
+    alt: 'ConvertIQ account and billing screen',
+    caption: 'Account & billing',
+  },
+];
+---
+
+<BaseLayout
+  title="ConvertIQ — AI-Powered E-Commerce Conversion Optimization · Josh Illichmann"
+  description="Case study: designing and shipping ConvertIQ, an AI-powered SaaS that audits e-commerce sites and turns AI output into a plain-language action plan."
+>
+  <main class="max-w-5xl mx-auto px-6 overflow-x-hidden">
+    <div class="space-y-12 py-12 animate-fade-in-up">
+      <!-- Back link + brand -->
+      <div class="space-y-6">
+        <a
+          href="/"
+          class="text-sm font-mono text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-2"
+        >
+          ← BACK
+        </a>
+        <div class="flex items-center gap-3">
+          <img
+            src="/convertiq.png"
+            alt="ConvertIQ"
+            width="40"
+            height="40"
+            class="rounded-lg"
+          />
+          <span class="text-sm font-mono text-gray-600 uppercase">Case Study</span>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <header class="space-y-6">
+        <h1 class="text-3xl md:text-4xl font-medium font-mono leading-tight">
+          ConvertIQ — AI-Powered E-Commerce Conversion Optimization
+        </h1>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+          How do you make AI-driven site analysis accessible to small business
+          owners who don&apos;t have technical SEO knowledge?
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-sm">
+          {
+            meta.map((item) => (
+              <div class="space-y-1">
+                <h2 class="font-medium uppercase font-mono text-xs">{item.label}</h2>
+                <p class="text-gray-600">{item.value}</p>
+              </div>
+            ))
+          }
+        </div>
+      </header>
+
+      <!-- Hero image -->
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/convertiq/convertiq_reports.png"
+          alt="ConvertIQ reports page showing scores, insights and recommendations"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- The Problem -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">THE PROBLEM</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            Small business owners running e-commerce stores face an invisible
+            problem: their website is costing them sales and they don&apos;t know
+            why.
+          </p>
+          <p>
+            They&apos;ve set up their Shopify or WooCommerce store, listed their
+            products, maybe even run some ads — but visitors aren&apos;t
+            converting. The gap between &ldquo;getting traffic&rdquo; and
+            &ldquo;making sales&rdquo; is filled with technical concepts most small
+            business owners have never encountered: page speed, mobile
+            optimisation, SEO structure, conversion-focused copy, trust signals.
+          </p>
+          <p>
+            The tools that do exist — Google Lighthouse, SEMrush, Ahrefs — are
+            built for developers and SEO professionals. They output walls of
+            technical jargon, scores without context, and recommendations that
+            assume you know what a &ldquo;render-blocking resource&rdquo; is. For
+            a small retailer doing under $100K a year, these tools create more
+            confusion than clarity.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">The insight:</span> Small
+            business owners don&apos;t need another SEO tool. They need someone to
+            look at their store, tell them what&apos;s wrong in plain language,
+            and show them exactly what to fix — ordered by what will make the
+            biggest difference.
+          </p>
+          <p>That&apos;s what ConvertIQ does.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Target Users -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">TARGET USERS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            <span class="text-gray-900 font-medium">
+              Small e-commerce business owners
+            </span>{' '}
+            — typically running a single Shopify, WooCommerce, or similar store
+            with annual revenue under $100K. They&apos;re hands-on operators: they
+            photograph their own products, write their own descriptions, and
+            manage their own store. They&apos;re resourceful but not technical.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What they have in common</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>They know their conversion rate isn&apos;t great, but don&apos;t know why</li>
+              <li>They&apos;ve heard of &ldquo;SEO&rdquo; but it feels like a black box</li>
+              <li>They can&apos;t afford an agency or a dedicated developer</li>
+              <li>They need actionable steps, not audits full of jargon</li>
+            </ul>
+          </div>
+          <p>
+            <span class="text-gray-900 font-medium">Secondary audience:</span>{' '}
+            small agencies managing multiple client websites who need a quick,
+            repeatable way to audit and optimise e-commerce stores.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">THE SOLUTION</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            ConvertIQ is an AI-powered platform that scans e-commerce websites
+            and delivers clear, prioritised recommendations to improve conversion
+            rates. Users paste in their URL, the AI analyses their site across
+            multiple dimensions, and they get a structured report telling them
+            exactly what to fix and in what order.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">DESIGN PROCESS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-10 text-base text-gray-600 leading-relaxed">
+          <!-- Making AI Output Human-Readable -->
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">
+              Making AI output human-readable
+            </h3>
+            <p>
+              This was the central design challenge of the entire product. AI
+              analysis generates a lot of data. The temptation is to show
+              everything — every finding, every metric, every recommendation. But
+              for a non-technical user, that&apos;s paralysing.
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">
+                The problem I was solving:
+              </span>{' '}
+              How do you take the output of an AI analysis pipeline and present
+              it so that a small business owner can look at it and immediately
+              know (a) how their site is performing, (b) what the biggest
+              problems are, and (c) what to do about them — without needing to
+              Google every second word?
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">My approach</span> was a
+              three-layer information hierarchy:
+            </p>
+
+            <div class="space-y-4 pl-5 border-l border-gray-200">
+              <div class="space-y-1">
+                <h4 class="text-gray-900 font-medium">
+                  Layer 1 — Scores (the snapshot)
+                </h4>
+                <p>
+                  Four clear category scores give users an instant read on their
+                  site&apos;s health: Page Speed, Mobile Optimisation, SEO Score,
+                  and Conversion Readiness. Each score is visual and unambiguous
+                  — you immediately know if you&apos;re in good shape or not.
+                  This answers &ldquo;how am I doing?&rdquo; in under two seconds.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <h4 class="text-gray-900 font-medium">
+                  Layer 2 — Key Insights (the diagnosis)
+                </h4>
+                <p>
+                  Below the scores, a curated set of key insights surfaces the
+                  most important findings in plain language. Not every data point
+                  the AI discovered — just the ones that matter most. This
+                  answers &ldquo;what&apos;s actually wrong?&rdquo; without
+                  overwhelming the user.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <h4 class="text-gray-900 font-medium">
+                  Layer 3 — Recommendations (the action plan)
+                </h4>
+                <p>
+                  The detailed recommendations are organised into four clear
+                  categories: Conversion Optimisation, User Experience, Technical
+                  Implementation, and SEO &amp; Visibility. Within each category,
+                  every recommendation is tagged with a{' '}
+                  <span class="text-gray-900 font-medium">priority level</span>{' '}
+                  (what to fix first) and an{' '}
+                  <span class="text-gray-900 font-medium">effort estimate</span>{' '}
+                  (how hard it is to implement). This answers &ldquo;what should
+                  I do about it?&rdquo; in a way that lets a non-technical person
+                  create an actual plan.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              This three-layer structure means a user who has five minutes gets
+              value from the scores alone. A user who has thirty minutes can work
+              through the recommendations and start making changes. Nobody hits a
+              wall of text.
+            </p>
+          </div>
+
+          <!-- Communicating Progress -->
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">
+              Communicating progress during analysis
+            </h3>
+            <p>
+              AI analysis takes time — the system is crawling pages, running
+              checks, and generating insights. A static loading screen would make
+              users wonder if anything is happening, or worse, close the tab.
+            </p>
+
+            <figure class="space-y-2 not-prose">
+              <div class="bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src="/convertiq/convertiq_scan_video.gif"
+                  alt="Animated scan progress experience"
+                  class="w-full h-auto"
+                />
+              </div>
+              <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                Scan progress — dynamic stages keep users informed during AI analysis
+              </figcaption>
+            </figure>
+
+            <p>
+              <span class="text-gray-900 font-medium">
+                The design decision:
+              </span>{' '}
+              I built a dynamic progress experience that shows the scan actively
+              working. A progress indicator communicates that the system is doing
+              something meaningful, not just spinning its wheels. Users can see
+              the analysis progressing through stages, which builds confidence
+              that the wait is worth it.
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">Why this matters:</span>{' '}
+              For a product where the core value proposition is &ldquo;we analyse
+              your site,&rdquo; the analysis experience IS the product. If the
+              scanning feels broken or uncertain, users lose trust before they
+              even see the results.
+            </p>
+          </div>
+
+          <!-- Dashboard Design -->
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Dashboard design</h3>
+            <p>
+              The dashboard needed to serve users who might scan multiple pages
+              across their site over time. The challenge was keeping it simple
+              for first-time users (who&apos;ve done one scan) while scaling for
+              returning users building a history.
+            </p>
+
+            <figure class="space-y-2 not-prose">
+              <div class="bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src="/convertiq/convertiq_dashboard.png"
+                  alt="ConvertIQ dashboard"
+                  class="w-full h-auto"
+                />
+              </div>
+              <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                Dashboard — total scans, average score, quick actions
+              </figcaption>
+            </figure>
+
+            <div class="space-y-2">
+              <h4 class="text-gray-900 font-medium">What the dashboard shows</h4>
+              <ul class="space-y-2 list-disc pl-5">
+                <li>Total scans completed</li>
+                <li>Total reports generated</li>
+                <li>
+                  Average score across all scans (giving a holistic site health
+                  view)
+                </li>
+                <li>Quick actions to start a new scan or revisit recent reports</li>
+              </ul>
+            </div>
+
+            <p>
+              I kept the dashboard deliberately minimal. The temptation with
+              analytics dashboards is to pack in charts, trends, and comparisons.
+              But for this audience — small business owners who are time-poor and
+              action-oriented — the dashboard should answer one question:{' '}
+              <span class="text-gray-900 font-medium">
+                &ldquo;what should I do next?&rdquo;
+              </span>{' '}
+              The quick actions ensure they&apos;re always one click away from
+              their next scan or their most recent report.
+            </p>
+          </div>
+
+          <!-- Pricing -->
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Pricing architecture</h3>
+            <p>
+              The pricing model needed to serve two distinct user types without
+              overcomplicating the offering.
+            </p>
+            <ul class="space-y-3 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Basic plan</span> —
+                designed for the core user: a small business owner with one
+                website. Unlimited scans so they can re-analyse after making
+                changes and track improvement over time. The value proposition is
+                simple: one site, unlimited optimisation.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Pro plan</span> —
+                designed for the secondary audience: small agencies managing
+                multiple client sites. Supports up to 10 domains, making it a
+                practical tool for client work. The upgrade path is clear: if
+                you&apos;re managing more than one site, Pro is for you.
+              </li>
+            </ul>
+            <div class="space-y-2 pt-2">
+              <h4 class="text-gray-900 font-medium">Key decisions</h4>
+              <ul class="space-y-2 list-disc pl-5">
+                <li>
+                  <span class="text-gray-900 font-medium">No free tier.</span>{' '}
+                  Signals that ConvertIQ delivers real value, not a watered-down
+                  preview. Free tiers often attract users who never convert and
+                  create support overhead. For a solo-built product, this was
+                  also a sustainability decision.
+                </li>
+                <li>
+                  <span class="text-gray-900 font-medium">
+                    External payment merchant, kept on brand.
+                  </span>{' '}
+                  The checkout flow uses an external payment provider but the
+                  experience stays visually consistent with ConvertIQ&apos;s
+                  brand — no jarring redirects or broken design continuity.
+                </li>
+                <li>
+                  <span class="text-gray-900 font-medium">Two tiers only.</span>{' '}
+                  No &ldquo;enterprise&rdquo; tier, no feature matrix with 15
+                  rows. Two clear options, one obvious differentiator (number of
+                  domains). Easy to understand, easy to choose.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shipping Fast -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">VELOCITY</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <h3 class="text-gray-900 font-medium text-lg">
+            Shipping fast — 10 days, 130+ commits
+          </h3>
+          <p>
+            ConvertIQ went from concept to live product in approximately 10 days.
+            This wasn&apos;t cutting corners — it was a deliberate exercise in
+            rapid product development.
+          </p>
+          <div class="space-y-2">
+            <h4 class="text-gray-900 font-medium">What made this possible</h4>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Strong PRD upfront.
+                </span>{' '}
+                I wrote a detailed product requirements document before writing
+                any code. This meant I wasn&apos;t making scope decisions
+                mid-build.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Opinionated tech stack.
+                </span>{' '}
+                Next.js App Router, tRPC, Tailwind CSS, Drizzle ORM, PostgreSQL,
+                Redis, Vercel, BetterAuth, Polar, and Resend. Every tool chosen
+                for speed and reliability.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Design-then-build, not design-while-building.
+                </span>{' '}
+                Having Figma mockups and a clear information architecture before
+                development meant the build phase was execution, not exploration.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Ruthless scoping.</span>{' '}
+                Every feature was evaluated against &ldquo;does this need to
+                exist for launch?&rdquo; If not, it was cut or deferred.
+              </li>
+            </ul>
+          </div>
+          <p>
+            <span class="text-gray-900 font-medium">
+              Why this matters for a design portfolio:
+            </span>{' '}
+            Shipping fast demonstrates that design thinking and rapid execution
+            aren&apos;t opposites. Good design decisions — clear information
+            hierarchy, simple pricing, progressive disclosure — actually
+            accelerate development because you&apos;re not redesigning mid-sprint.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Design Decisions -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">DECISIONS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-8 text-base text-gray-600 leading-relaxed">
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What I built</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  AI-powered site scanning
+                </span>{' '}
+                with dynamic progress UX
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Three-layer results hierarchy
+                </span>{' '}
+                — scores, insights, recommendations
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Priority + effort tagging
+                </span>{' '}
+                on every recommendation
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Four analysis categories
+                </span>{' '}
+                — Conversion, UX, Technical, SEO
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Minimal dashboard</span>{' '}
+                focused on action, not vanity metrics
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Two-tier pricing</span> —
+                simple, clear, no free tier
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">
+              What I intentionally left out
+            </h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Competitor comparison features
+                </span>{' '}
+                — tempting but out of scope for V1. Users need to fix their own
+                site first.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Historical trend charts
+                </span>{' '}
+                — useful for power users but premature. Average score provides
+                enough signal for now.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  White-label / agency branding
+                </span>{' '}
+                — a natural Pro feature but adds complexity. Deferred.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Free tier</span> —
+                deliberate positioning decision, not an oversight.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes & Reflections -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">OUTCOMES</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-8 text-base text-gray-600 leading-relaxed">
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What shipped</h3>
+            <p>
+              ConvertIQ is{' '}
+              <a
+                href="https://www.convertiq.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-900 font-medium underline"
+              >
+                live and taking users
+              </a>{' '}
+              — a fully functional SaaS product serving Australian small business
+              owners and e-commerce operators.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What I learned</h3>
+            <ul class="space-y-3 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Information hierarchy is the product.
+                </span>{' '}
+                The difference between ConvertIQ and a raw AI output dump is
+                entirely in how the information is structured and presented. The
+                three-layer approach (scores → insights → recommendations) turned
+                overwhelming data into an actionable plan. This is where design
+                creates business value.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Progress UX builds trust.
+                </span>{' '}
+                For a product where users wait for AI analysis, the scanning
+                experience directly impacts whether they trust the results. A
+                loading spinner says &ldquo;wait.&rdquo; A progress indicator
+                says &ldquo;we&apos;re working for you.&rdquo; That distinction
+                matters.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Constraints clarify positioning.
+                </span>{' '}
+                No free tier. Two plans. One clear differentiator. These
+                constraints weren&apos;t limitations — they were positioning
+                decisions that made the product easier to understand, easier to
+                sell, and easier to build.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Speed and quality aren&apos;t opposites.
+                </span>{' '}
+                Shipping in 10 days with a strong PRD, clear design system, and
+                opinionated stack proved that velocity comes from decisions made
+                before the build, not shortcuts made during it.
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">What&apos;s next</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>User feedback integration to refine the recommendation engine</li>
+              <li>Historical score tracking and trend visualisation</li>
+              <li>
+                Expanded platform-specific recommendations (Shopify-specific,
+                WooCommerce-specific)
+              </li>
+              <li>Agency features for Pro tier (client reporting, white-label)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">SCREENSHOTS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {
+              screenshots.map((shot) => (
+                <figure class="space-y-2">
+                  <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <figcaption class="text-xs font-mono text-gray-500 uppercase">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="py-12">
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-xl font-medium font-mono">More projects</h2>
+          <p class="text-gray-600 text-sm">
+            Browse the rest of my work or get in touch.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4 text-sm">
+          <a
+            href="/"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            ← BACK TO HOME
+          </a>
+          <a
+            href="https://www.convertiq.cloud"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            VISIT CONVERTIQ →
+          </a>
+          <a
+            href="mailto:josh@studioprisoner.com"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            EMAIL ME →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 text-sm text-gray-500 space-y-4 font-mono">
+      <p>Designed and built by Josh · 2025 · Shipped in ~10 days</p>
+      <p>© {year}</p>
+    </footer>
+  </main>
+</BaseLayout>

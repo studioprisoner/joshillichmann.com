@@ -131,6 +131,60 @@ const screenshots = [
       </div>
     </section>
 
+    <!-- Research -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">RESEARCH</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            The &ldquo;plain language&rdquo; insight wasn&apos;t a guess — it came out
+            of talking to the people this is for. On a tight timeline I kept research
+            lightweight but deliberate.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">1:1 conversations with store owners</h3>
+            <p>
+              I spoke with small e-commerce operators about how they think about their
+              own websites. The pattern was consistent: they knew something was off
+              with their conversion rate, but the tools meant to help — Lighthouse,
+              SEMrush, Ahrefs — left them more confused, not less. They didn&apos;t lack
+              effort; they lacked a translation layer.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">Listening to the wider community</h3>
+            <p>
+              I read through Shopify and WooCommerce forums, e-commerce subreddits, and
+              reviews of existing SEO tools to understand where they break down for
+              non-technical owners. The recurring complaint: walls of jargon and scores
+              with no sense of{' '}
+              <span class="text-gray-900">what to actually do first</span>.
+            </p>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">What I heard</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>&ldquo;Tell me what&apos;s wrong in words I understand.&rdquo;</li>
+              <li>
+                &ldquo;I don&apos;t have time to read a report — just tell me what to
+                fix first.&rdquo;
+              </li>
+              <li>&ldquo;I can&apos;t tell if these scores are good or bad.&rdquo;</li>
+            </ul>
+          </div>
+          <p>
+            <span class="text-gray-900 font-medium">How it shaped the design:</span>{' '}
+            this is the origin of the three-layer hierarchy (scores → insights →
+            recommendations) and the priority + effort tags on every recommendation —
+            the whole product is a direct response to what these conversations
+            surfaced.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Target Users -->
     <section class="py-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
@@ -409,6 +463,100 @@ const screenshots = [
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usability Testing -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">TESTING</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            Because the whole premise is &ldquo;make AI output understandable,&rdquo; I
+            couldn&apos;t judge the reports on my own — I know too much about what&apos;s
+            under the hood. So I put the results page in front of non-technical people:
+            a round of user testing plus informal sessions with friends and family,
+            watching them read a real report cold.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I watched for</h3>
+            <p>
+              Could they tell, within seconds, whether their site was in good shape?
+              Did they know what to do next? Which words made them pause or reach for
+              Google?
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium">What testing changed</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Scores earn trust first.</span>{' '}
+                People oriented on the four category scores before reading anything else
+                — which validated leading with the snapshot and keeping the detail
+                below it.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  &ldquo;What do I do first?&rdquo; was the real question.
+                </span>{' '}
+                Testers gravitated straight to priority — confirming that the priority
+                and effort tags weren&apos;t decoration, they were the point.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Jargon got cut.</span>{' '}
+                Any term that made a tester pause became a signal to rewrite the insight
+                in plainer language. The copy got simpler every time someone new read
+                it.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Testing also confirmed the scan-progress experience was doing its job:
+            nobody assumed the app had frozen, because the staged progress kept telling
+            them it was working.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">ACCESSIBILITY</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            ConvertIQ&apos;s audience checks their store on whatever device is in their
+            hand, so the baseline had to hold up across screen sizes and text settings.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I addressed</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Tap &amp; click targets:</span>{' '}
+                interactive elements sized so the product is comfortable on a phone, not
+                just a desktop.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Responsive text scaling:</span>{' '}
+                layouts hold together when text is zoomed or the browser font size is
+                bumped up, so the reports stay readable for people who size text larger.
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I&apos;m still improving</h3>
+            <p>
+              A formal colour-contrast audit, full keyboard-navigation coverage, and a
+              screen-reader pass against WCAG are the next step. I&apos;d rather name
+              accessibility as an area I&apos;m actively learning than overstate where
+              it stands today.
+            </p>
           </div>
         </div>
       </div>

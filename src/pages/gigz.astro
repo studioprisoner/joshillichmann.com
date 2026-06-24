@@ -131,6 +131,70 @@ const alternatives = [
       </div>
     </section>
 
+    <!-- Research -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">RESEARCH</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            It started as my own pain point — but I didn&apos;t want to design for an
+            audience of one. Before committing to a direction, I did two kinds of
+            lightweight research to pressure-test the idea against real people.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">1:1 conversations with concert-goers</h3>
+            <p>
+              I ran informal interviews with friends and acquaintances across the
+              spectrum — from once-a-year casuals to people with decades of shows
+              behind them. I wasn&apos;t pitching an app; I asked how they remember
+              shows today, what they wish they could look back on, and where their
+              current workarounds let them down.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">Listening to the wider community</h3>
+            <p>
+              I spent time in music forums, subreddits, and the App Store reviews of
+              adjacent apps to learn the language fans actually use and the gaps they
+              complain about — so the product would speak their vocabulary, not mine.
+            </p>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">What I heard</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                People remember{' '}
+                <span class="text-gray-900">feelings and moments</span> — the photo,
+                the support act, that one song — far more vividly than dates and
+                venues.
+              </li>
+              <li>
+                Almost everyone had a{' '}
+                <span class="text-gray-900">&ldquo;lost history&rdquo; regret</span>{' '}
+                — early shows they could no longer reconstruct.
+              </li>
+              <li>
+                Existing workarounds (Instagram, Notes, spreadsheets) were described
+                as effort, not joy.
+              </li>
+              <li>
+                Setlists came up again and again as the detail that snaps a memory
+                back into focus.
+              </li>
+            </ul>
+          </div>
+          <p>
+            <span class="text-gray-900 font-medium">How it shaped the design:</span>{' '}
+            these findings defined the two user types below, pushed me toward a visual
+            card-based timeline rather than a list, and made photos and setlists
+            first-class features rather than afterthoughts.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Target Users -->
     <section class="py-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
@@ -138,7 +202,7 @@ const alternatives = [
           <h2 class="text-sm font-mono">TARGET USERS</h2>
         </div>
         <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
-          <p>Two overlapping groups:</p>
+          <p>The interviews surfaced two overlapping groups:</p>
           <div class="space-y-4">
             <div class="space-y-2">
               <h3 class="text-gray-900 font-medium">The Nostalgic Fan</h3>
@@ -327,36 +391,6 @@ const alternatives = [
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-gray-900 font-medium text-lg">Onboarding & authentication</h3>
-            <p>
-              Through TestFlight testing with real users, I learned an important
-              lesson about authentication.
-            </p>
-            <ul class="space-y-2 list-disc pl-5">
-              <li>
-                <span class="text-gray-900 font-medium">Original design:</span>{' '}
-                Sign in with Apple + OTP via SMS
-              </li>
-              <li>
-                <span class="text-gray-900 font-medium">Problem discovered:</span>{' '}
-                Some users on certain carriers weren&apos;t receiving the SMS
-                codes reliably. This was a hard blocker — users literally
-                couldn&apos;t get into the app.
-              </li>
-              <li>
-                <span class="text-gray-900 font-medium">Decision:</span> I removed
-                SMS OTP entirely and switched to email-based OTP. Less flashy, but
-                universally reliable.
-              </li>
-            </ul>
-            <p>
-              The lesson: don&apos;t let a &ldquo;nice to have&rdquo;
-              authentication method create a &ldquo;can&apos;t get in&rdquo;
-              experience.
-            </p>
-          </div>
-
-          <div class="space-y-4">
             <h3 class="text-gray-900 font-medium text-lg">
               Photo management & cover personalisation
             </h3>
@@ -374,6 +408,103 @@ const alternatives = [
               the same concert will have completely different-looking journals.
               The cover photo transforms the card from &ldquo;I went to this
               show&rdquo; to &ldquo;this is MY memory of this show.&rdquo;
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usability Testing -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">TESTING</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            I tested Gigz continuously rather than in one big round: informal sessions
+            with friends and family watching them add their very first show, and
+            several TestFlight builds put in front of real users who lived with the app
+            over time.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I watched for</h3>
+            <p>
+              Could someone log their first concert without any instruction? Where did
+              they hesitate? What did they expect to tap that wasn&apos;t there? I paid
+              less attention to what people said and more to where they got stuck.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium">What testing changed</h3>
+            <p>
+              The most important finding was an authentication failure I&apos;d never
+              have caught on my own devices:
+            </p>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Original design:</span>{' '}
+                Sign in with Apple + a one-time code via SMS.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Problem discovered:</span>{' '}
+                some testers on certain carriers silently never received the SMS codes.
+                This was a hard blocker — they literally couldn&apos;t get into the
+                app, and most wouldn&apos;t have reported it; they&apos;d have just
+                left.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Decision:</span> I removed SMS
+                OTP entirely and switched to email-based codes. Less flashy, but
+                universally reliable.
+              </li>
+            </ul>
+            <p>
+              <span class="text-gray-900 font-medium">The lesson:</span> don&apos;t let
+              a &ldquo;nice to have&rdquo; auth method create a &ldquo;can&apos;t get
+              in&rdquo; experience. Beyond auth, testing reinforced two bets: the card
+              timeline genuinely delighted people on first scroll, and retroactive
+              logging had to be near-frictionless — confirming the design choices the
+              rest of this case study is built on.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">ACCESSIBILITY</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            I built Gigz to be a good iOS citizen from the start, and I treat
+            accessibility as an ongoing craft rather than a box to tick.
+          </p>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I addressed</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900 font-medium">Touch targets:</span> sized
+                interactive elements to comfortable minimums so the app works
+                one-handed and forgives less precise taps.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Dynamic Type:</span> text
+                respects the user&apos;s system text-size setting, so the timeline
+                stays legible for people who run larger fonts.
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">What I&apos;m still improving</h3>
+            <p>
+              A full VoiceOver pass, a formal contrast audit across photo-backed cards,
+              and a WCAG-style review are next on my list. I&apos;d rather be honest
+              that accessibility is a craft I&apos;m actively levelling up than claim a
+              finished bill of health.
             </p>
           </div>
         </div>

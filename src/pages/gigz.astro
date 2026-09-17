@@ -5,8 +5,8 @@ const year = new Date().getFullYear();
 
 const meta = [
   { label: 'Role', value: 'Solo Product Designer & Developer' },
-  { label: 'Timeline', value: '2024–2025' },
-  { label: 'Platform', value: 'iOS (Live on the App Store)' },
+  { label: 'Timeline', value: '2024–2026' },
+  { label: 'Platform', value: 'iOS (Live on the App Store), Android in development' },
 ];
 
 const alternatives = [
@@ -35,12 +35,17 @@ const alternatives = [
     strengths: 'Zero effort',
     weaknesses: 'Unreliable — details fade fast',
   },
+  {
+    method: 'Gigz v1',
+    strengths: 'Personal, visual, setlists',
+    weaknesses: 'Manual entry, no social, no upcoming shows',
+  },
 ];
 ---
 
 <BaseLayout
   title="Gigz — A Concert Journaling App for Music Fans · Josh Illichmann"
-  description="Case study: designing and building Gigz, an iOS concert journaling app for music fans. Card-based timeline, setlist integration, photo personalisation."
+  description="Case study: designing and building Gigz, an iOS concert journaling app for music fans. Year-grouped history, setlist integration, photo personalisation."
 >
   <main class="max-w-5xl mx-auto px-6 overflow-x-hidden">
     <div class="space-y-12 py-12 animate-fade-in-up">
@@ -72,6 +77,9 @@ const alternatives = [
         <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
           How do you help music fans preserve and revisit their concert history —
           without making it feel like a chore?
+        </p>
+        <p class="text-sm font-mono text-gray-500">
+          Version 1 shipped in November 2024. Version 2.0 shipped in September 2026.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-sm">
@@ -127,6 +135,13 @@ const alternatives = [
             tool for concert journaling that treated the experience with the care it
             deserved.
           </p>
+          <p>
+            Version 1 shipped and solved that problem — but living with it for a
+            year surfaced a second one. Adding a show meant typing in the artist,
+            the venue, the date, the setlist, by hand, every time. A diary that
+            feels like data entry doesn&apos;t get kept, and that&apos;s exactly
+            what people did with it.
+          </p>
         </div>
       </div>
     </section>
@@ -161,6 +176,14 @@ const alternatives = [
               complain about — so the product would speak their vocabulary, not mine.
             </p>
           </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">Living with version 1</h3>
+            <p>
+              The most valuable research came after launch: watching what real
+              users did, and didn&apos;t do, over roughly a year on the App Store
+              and in TestFlight.
+            </p>
+          </div>
           <div class="space-y-3">
             <h3 class="text-gray-900 font-medium">What I heard</h3>
             <ul class="space-y-2 list-disc pl-5">
@@ -185,11 +208,37 @@ const alternatives = [
               </li>
             </ul>
           </div>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">What a year with version 1 showed</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                <span class="text-gray-900">Manual entry was the biggest
+                drop-off point.</span> Most people logged a few shows and then
+                stopped.
+              </li>
+              <li>
+                Shows entered by hand were inconsistent — spellings, venue names
+                — which made any kind of stats impossible.
+              </li>
+              <li>
+                People wanted to know about upcoming tours for artists
+                they&apos;d already seen.
+              </li>
+              <li>
+                Friends wanted to compare histories with each other, but nobody
+                asked for a public profile.
+              </li>
+            </ul>
+          </div>
           <p>
             <span class="text-gray-900 font-medium">How it shaped the design:</span>{' '}
-            these findings defined the two user types below, pushed me toward a visual
-            card-based timeline rather than a list, and made photos and setlists
-            first-class features rather than afterthoughts.
+            the first round of findings defined the two user types below, pushed
+            me toward a visual card-based timeline rather than a list, and made
+            photos and setlists first-class features rather than afterthoughts.
+            The second round, a year later, became the brief for version 2.0:
+            replace manual entry with recognition, make records consistent enough
+            to power stats, and add just enough social to compare with friends —
+            without ever making the app feel public.
           </p>
         </div>
       </div>
@@ -218,7 +267,8 @@ const alternatives = [
               <p>
                 Someone who goes to shows regularly and wants to log them as they
                 happen. They care about setlists, venues, and building a visual
-                record of their music life over time.
+                record of their music life over time. They also want to know the
+                moment a favourite artist announces a new show.
               </p>
             </div>
           </div>
@@ -321,6 +371,13 @@ const alternatives = [
               . Each card shows the artist, venue, date, and a cover photo —
               giving users an immediate visual anchor for each memory.
             </p>
+            <p>
+              <span class="text-gray-900 font-medium">2.0 evolved this again.</span>{' '}
+              The timeline is now a list, with a row of year pills across the
+              top — All gigz, 2026, 2025, 2024, and so on — that you scroll
+              horizontally and tap to jump straight to a year. The
+              grouping-by-year idea survived; the endless scroll didn&apos;t.
+            </p>
           </div>
 
           <div class="space-y-4">
@@ -339,32 +396,21 @@ const alternatives = [
               personal.
             </p>
             <p>
-              <span class="text-gray-900 font-medium">My approach:</span> adaptive
-              card density thresholds based on the number of shows within a year
-              grouping:
+              <span class="text-gray-900 font-medium">Version 1&apos;s approach:</span>{' '}
+              adaptive card density thresholds based on the number of shows
+              within a year grouping — full-size cards at low volume, compact
+              cards at medium volume, condensed list entries at high volume. It
+              worked, but it was still one long scroll, just with the cards
+              shrinking as you went.
             </p>
-            <ul class="space-y-2 list-disc pl-5">
-              <li>
-                <span class="text-gray-900">Low volume (1–5 shows/year):</span>{' '}
-                Full-size cards with large cover photos — maximise the visual
-                storytelling
-              </li>
-              <li>
-                <span class="text-gray-900">Medium volume (6–15 shows/year):</span>{' '}
-                Compact cards with smaller images — still visually rich but more
-                scannable
-              </li>
-              <li>
-                <span class="text-gray-900">High volume (16+ shows/year):</span>{' '}
-                Condensed list-style entries within the year group — prioritise
-                browsability, with the option to expand
-              </li>
-            </ul>
             <p>
-              This meant the timeline could scale naturally. Someone logging their
-              first year of gigs gets a rich, photo-forward experience. A veteran
-              who&apos;s been to 300 shows gets something they can actually
-              navigate.
+              <span class="text-gray-900 font-medium">Version 2.0&apos;s approach:</span>{' '}
+              stop compressing the scroll and remove it instead. A horizontally
+              scrollable row of year pills sits above the list, so someone with
+              300 shows across 15 years jumps straight to 2019 instead of
+              scrolling past 280 entries to get there. The list itself stays
+              simple and consistent, because the pills carry the scale instead
+              of the card size.
             </p>
           </div>
 
@@ -395,20 +441,148 @@ const alternatives = [
               Photo management & cover personalisation
             </h3>
             <p>
-              Users can upload photos for each concert — up to 5 per show. This
-              limit was a deliberate constraint driven by storage costs, but I
-              framed it as a design choice: it encourages users to pick their
-              best, most meaningful photos rather than dumping their entire camera
-              roll.
+              In 2.0, photo uploads became a free/premium split: one photo per
+              show on a free account, up to 15 on a premium one. The free tier
+              isn&apos;t crippled by it — one photo is enough for the
+              personalisation moment that matters most: choosing the photo that
+              represents the memory. Premium is for people who want a fuller
+              photo record of the night.
             </p>
             <p>
-              A key personalisation feature: users can choose which photo becomes
-              the <span class="text-gray-900 font-medium">cover image</span> for a
-              show&apos;s card in the timeline. This means two users who attended
-              the same concert will have completely different-looking journals.
-              The cover photo transforms the card from &ldquo;I went to this
-              show&rdquo; to &ldquo;this is MY memory of this show.&rdquo;
+              A key personalisation feature, unchanged since version 1: users
+              choose which photo becomes the{' '}
+              <span class="text-gray-900 font-medium">cover image</span> for a
+              show in the list. This means two users who attended the same
+              concert will have completely different-looking journals. The cover
+              photo transforms the entry from &ldquo;I went to this show&rdquo;
+              to &ldquo;this is MY memory of this show.&rdquo;
             </p>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">
+              Recognition over recall — rebuilding the Add flow
+            </h3>
+            <p>
+              The single biggest design decision in 2.0 was killing the blank
+              form.
+            </p>
+            <p>
+              In version 1, adding a show meant typing everything in from
+              scratch: artist, venue, date, setlist. In 2.0, you search for an
+              artist and see every show they&apos;ve played in your city. Tap the
+              one you were at, and the artist, venue, date, and setlist all come
+              with it.
+            </p>
+            <p>
+              <span class="text-gray-900 font-medium">Why this works:</span>{' '}
+              recognition is easier than recall. Seeing &ldquo;Forum Theatre, 14
+              March 2019&rdquo; in a list snaps the memory back in a way a blank
+              text field never will. And because every show now comes from the
+              same structured record instead of a hand-typed guess, the data is
+              consistent enough to actually build stats on.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div class="bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src="/gigz-add-flow-1.png"
+                  alt="Gigz Add flow — search for an artist"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+              <div class="bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src="/gigz-add-flow-2.png"
+                  alt="Gigz Add flow — pick the show you were at"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+              <div class="bg-gray-100 rounded-xl overflow-hidden">
+                <img
+                  src="/gigz-add-flow-3.png"
+                  alt="Gigz Add flow — artist, venue, date, and setlist filled in automatically"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Stats and achievements</h3>
+            <p>
+              None of this was possible in version 1, because a spreadsheet of
+              typed-in text isn&apos;t data you can do anything with. Once every
+              show is a real, structured record, the app can show people
+              patterns across their own history: shows attended by year, their
+              top 5 artists, their top 5 venues. Numbers that only mean
+              something because the records behind them are consistent.
+            </p>
+            <div class="bg-gray-100 rounded-xl overflow-hidden max-w-xs">
+              <img
+                src="/gigz-stats.png"
+                alt="Gigz stats screen"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Social, kept quiet</h3>
+            <p>
+              Version 1 deliberately shipped with no social features at all —
+              the journal had to work for an audience of one before it worked
+              for two. 2.0 adds social, but under rules designed to stop a
+              personal journal turning into a performance:
+            </p>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                Friendships are mutual — there&apos;s no following, only
+                agreeing to connect.
+              </li>
+              <li>
+                A friend can see your attended shows, and only the ones
+                you&apos;ve chosen to share.
+              </li>
+              <li>
+                Upcoming shows are private by default, with access granted per
+                friend.
+              </li>
+              <li>
+                Nothing is public. No discover tab, no follower counts, no
+                profile anyone can stumble onto.
+              </li>
+            </ul>
+            <p>
+              <span class="text-gray-900 font-medium">The reasoning:</span> a
+              past show is a memory. A future show is a plan, and plans are more
+              sensitive — they say where you&apos;ll be and when. Social in
+              Gigz lives where you go looking for it, not on the home screen.
+            </p>
+            <div class="bg-gray-100 rounded-xl overflow-hidden max-w-xs">
+              <img
+                src="/gigz-privacy.png"
+                alt="Gigz privacy settings screen"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-gray-900 font-medium text-lg">Upcoming shows</h3>
+            <p>
+              2.0 lets you follow artists and see their announced dates in your
+              city, so a show moves from upcoming to attended the night it
+              happens instead of being typed in after the fact. It closes the
+              loop the version 1 research kept surfacing: people wanted to know
+              about a tour before it was already over.
+            </p>
+            <div class="bg-gray-100 rounded-xl overflow-hidden max-w-xs">
+              <img
+                src="/gigz-upcoming.png"
+                alt="Gigz upcoming shows screen"
+                class="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -468,6 +642,14 @@ const alternatives = [
               rest of this case study is built on.
             </p>
           </div>
+          <div class="space-y-2">
+            <h3 class="text-gray-900 font-medium">Sign-in today</h3>
+            <p>
+              Sign-in now offers Apple and Google as the primary options, with
+              the email one-time code kept on as the reliable fallback rather
+              than the default path.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -504,7 +686,9 @@ const alternatives = [
               A full VoiceOver pass, a formal contrast audit across photo-backed cards,
               and a WCAG-style review are next on my list. I&apos;d rather be honest
               that accessibility is a craft I&apos;m actively levelling up than claim a
-              finished bill of health.
+              finished bill of health. 2.0&apos;s move to iOS 26 and Liquid Glass makes
+              the contrast audit more relevant than ever, since translucent materials
+              can quietly erode the contrast a photo-backed card relied on.
             </p>
           </div>
         </div>
@@ -523,9 +707,10 @@ const alternatives = [
             <ul class="space-y-2 list-disc pl-5">
               <li>
                 <span class="text-gray-900 font-medium">
-                  Concert journaling with card-based timeline
+                  Concert journaling with a year-grouped list
                 </span>{' '}
-                — the core experience, grouped by year with adaptive density
+                — the core experience, with scrollable year pills for fast
+                navigation
               </li>
               <li>
                 <span class="text-gray-900 font-medium">
@@ -537,39 +722,63 @@ const alternatives = [
                 <span class="text-gray-900 font-medium">
                   Photo uploads with cover photo personalisation
                 </span>{' '}
-                — up to 5 photos per show, user-selected cover
+                — 1 photo free, up to 15 on premium, user-selected cover
               </li>
               <li>
                 <span class="text-gray-900 font-medium">Venue database & search</span>{' '}
                 — powered by multiple APIs (MusicBrainz, OpenStreetMap) for
                 comprehensive coverage
               </li>
+              <li>
+                <span class="text-gray-900 font-medium">Search-and-add show entry</span>{' '}
+                — replaces manual input with recognition
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Stats and achievements</span>{' '}
+                — built on top of consistent, structured show records
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">Friends</span> —
+                mutual-only, private-by-default sharing
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Upcoming shows & artist following
+                </span>{' '}
+                — see announced dates for artists you already follow
+              </li>
             </ul>
           </div>
 
           <div class="space-y-4">
-            <h3 class="text-gray-900 font-medium text-lg">What I intentionally left out</h3>
+            <h3 class="text-gray-900 font-medium text-lg">
+              What I left out of version 1, and why some of it came back
+            </h3>
             <ul class="space-y-2 list-disc pl-5">
               <li>
                 <span class="text-gray-900 font-medium">Social features</span> —
-                No sharing, no friends list, no public profiles. A deliberate V1
-                scoping decision. The journaling experience needed to be solid
-                before adding social layers. Adding social too early risks turning
-                a personal journal into a performance.
+                No sharing, no friends list, no public profiles in version 1.
+                The journaling experience needed to be solid before adding
+                social layers, and adding social too early risks turning a
+                personal journal into a performance. 2.0 adds social only now
+                that the privacy model — mutual friends, private by default —
+                exists to answer that risk directly.
               </li>
               <li>
                 <span class="text-gray-900 font-medium">
                   Discovery / recommendations
                 </span>{' '}
-                — The app is about YOUR history, not suggesting new shows. Scope
-                control.
+                — still left out. Upcoming shows are for artists you already
+                follow, not the app suggesting new ones to you. The app stays
+                about your history and your choices, not a feed.
               </li>
               <li>
                 <span class="text-gray-900 font-medium">
                   Unlimited photo uploads
                 </span>{' '}
-                — Capped at 5 per show for storage cost management, but also
-                because constraints often improve the end result.
+                — still not unlimited, but 2.0 turned the flat cap into a tier:
+                one photo free, up to 15 on premium, instead of the same limit
+                for everyone.
               </li>
             </ul>
           </div>
@@ -589,7 +798,7 @@ const alternatives = [
             <p>
               Gigz is{' '}
               <a
-                href="https://gigz.app"
+                href="https://apps.apple.com/us/app/gigz-app/id6670392747?itscg=30200&itsct=gigz_web_hero&mttnsubad=6670392747&ct=web_hero"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-gray-900 font-medium underline"
@@ -598,6 +807,14 @@ const alternatives = [
               </a>{' '}
               — a fully functional concert journaling app that lets music fans
               log, revisit, and personalise their concert history.
+            </p>
+            <p>
+              2.0 is a full rebuild: a new data model and backend, the
+              search-based Add flow, stats, friends, and upcoming shows, all
+              redesigned around iOS 26. One backend holds every visibility
+              rule, so when the Android app ships, it inherits the same
+              privacy model rather than needing its own version of those
+              decisions.
             </p>
           </div>
 
@@ -608,7 +825,7 @@ const alternatives = [
                 <span class="text-gray-900 font-medium">
                   Constraints are design tools.
                 </span>{' '}
-                The 5-photo limit and the decision to cut social features
+                The photo cap and the decision to cut social features
                 weren&apos;t just cost-saving measures — they sharpened the
                 product&apos;s identity. Gigz is a personal journal, and every
                 decision reinforced that.
@@ -625,9 +842,23 @@ const alternatives = [
                 <span class="text-gray-900 font-medium">
                   Scaling UX matters from day one.
                 </span>{' '}
-                The timeline density challenge wasn&apos;t a &ldquo;nice to
-                have&rdquo; — it was the difference between an app that works for
-                casual users and one that works for everyone.
+                The timeline scaling challenge wasn&apos;t a &ldquo;nice to
+                have&rdquo; — it was the difference between an app that works
+                for casual users and one that works for everyone. The solution
+                changed between versions; the lesson didn&apos;t.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Remove input rather than polish it.
+                </span>{' '}
+                The best fix for the add-a-show form was to not have one.
+              </li>
+              <li>
+                <span class="text-gray-900 font-medium">
+                  Decide what friends can&apos;t see before deciding what they
+                  can.
+                </span>{' '}
+                Privacy defaults are a design decision, not a settings screen.
               </li>
             </ul>
           </div>
@@ -636,64 +867,14 @@ const alternatives = [
             <h3 class="text-gray-900 font-medium text-lg">What&apos;s next</h3>
             <ul class="space-y-2 list-disc pl-5">
               <li>
-                Exploring social features (sharing individual show cards, comparing
-                concert history with friends)
+                On This Day — a memory resurfaced on its anniversary, with a
+                shareable Gigz ticket stub designed for that show
               </li>
-              <li>
-                Richer data visualisation (concert stats, venue maps, genre
-                breakdowns over time)
-              </li>
-              <li>Expanded venue and artist database coverage</li>
+              <li>More cities (Australian cities only at the moment)</li>
+              <li>Android app</li>
+              <li>Links to ticket platforms for upcoming shows</li>
+              <li>Reminders when a followed artist announces a tour</li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Artifacts -->
-    <section class="py-12">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
-        <div class="col-span-1 md:col-span-2">
-          <h2 class="text-sm font-mono">ARTIFACTS</h2>
-        </div>
-        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <figure class="space-y-2">
-              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
-                <img
-                  src="/userflows-gigz.png"
-                  alt="Gigz user flows diagram"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <figcaption class="text-xs font-mono text-gray-500 uppercase">
-                User flows
-              </figcaption>
-            </figure>
-            <figure class="space-y-2">
-              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
-                <img
-                  src="/wireframes-gigz.png"
-                  alt="Gigz wireframes"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <figcaption class="text-xs font-mono text-gray-500 uppercase">
-                Wireframes
-              </figcaption>
-            </figure>
-            <figure class="space-y-2">
-              <div class="bg-gray-100 rounded-xl aspect-[4/3] overflow-hidden">
-                <img
-                  src="/ui-design-gigz.png"
-                  alt="Gigz UI design in Figma"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <figcaption class="text-xs font-mono text-gray-500 uppercase">
-                UI design (Figma)
-              </figcaption>
-            </figure>
           </div>
         </div>
       </div>
@@ -724,6 +905,14 @@ const alternatives = [
             VISIT GIGZ →
           </a>
           <a
+            href="https://apps.apple.com/us/app/gigz-app/id6670392747?itscg=30200&itsct=gigz_web_hero&mttnsubad=6670392747&ct=web_hero"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
+          >
+            DOWNLOAD ON APP STORE →
+          </a>
+          <a
             href="mailto:josh@studioprisoner.com"
             class="font-mono text-gray-800 hover:text-gray-600 transition-colors"
           >
@@ -734,7 +923,7 @@ const alternatives = [
     </section>
 
     <footer class="py-8 text-sm text-gray-500 space-y-4 font-mono">
-      <p>Designed and built by Josh · 2024–2025</p>
+      <p>Designed and built by Josh · 2024–2026</p>
       <p>© {year}</p>
     </footer>
   </main>

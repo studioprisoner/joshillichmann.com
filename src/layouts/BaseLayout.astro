@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = 'Josh Illichmann | Product Designer',
-  description = 'Product Designer from Melbourne, Australia',
+  title = 'Josh Illichmann | Product Designer & Design Engineer',
+  description = 'Product designer and design engineer in Melbourne, Australia. I design products and ship the code.',
 } = Astro.props;
 
 const siteUrl = 'https://joshillichmann.com';
@@ -34,7 +34,7 @@ const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Josh Illichmann" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />

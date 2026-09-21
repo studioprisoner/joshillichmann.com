@@ -1,0 +1,590 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const meta = [
+  { label: 'Role', value: 'UX Research & Design (solo)' },
+  { label: 'Timeline', value: '12–13 weeks, 2024' },
+  { label: 'Context', value: 'Swinburne capstone with Penfolds / Treasury Wine Estates' },
+];
+
+const personas = [
+  {
+    name: 'Sarah',
+    trait: 'Mobile-first shopper',
+    detail:
+      'Browses and buys almost entirely on her phone. Values sites that clearly work on mobile rather than tolerate it.',
+    goals: [
+      'Complete a purchase on a phone without friction',
+      'See the real cost early — no surprise tax or shipping at the last step',
+    ],
+  },
+  {
+    name: 'James',
+    trait: 'Confident across devices',
+    detail:
+      'Comfortable with technology, moves between laptop and phone mid-purchase. Cares about who he is buying from.',
+    goals: [
+      'Buy quickly and know the transaction is secure',
+      'Confirm the retailer is local, with a returns policy he can find',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Penfolds — Navigation and Checkout Redesign · Josh Illichmann"
+  description="Case study: a UX research and design project rethinking global navigation, the mini-cart and checkout for Penfolds.com. Swinburne capstone with Treasury Wine Estates."
+>
+  <main class="max-w-5xl mx-auto px-6 overflow-x-hidden">
+    <div class="space-y-12 py-12 animate-fade-in-up">
+      <!-- Back link -->
+      <div class="space-y-6">
+        <a
+          href="/"
+          class="text-sm font-mono text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-2"
+        >
+          ← BACK
+        </a>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-mono text-gray-600 uppercase">Case Study</span>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <header class="space-y-6">
+        <h1 class="text-3xl md:text-4xl font-medium font-mono leading-tight">
+          Penfolds — Navigation and Checkout Redesign
+        </h1>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+          A heritage wine brand with a global catalogue, a navigation menu that had
+          grown to hold all of it, and a checkout that asked people to create an
+          account before they could buy.
+        </p>
+        <p class="text-sm font-mono text-gray-500">
+          A Swinburne University capstone, run with the Penfolds team at Treasury
+          Wine Estates.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-sm">
+          {
+            meta.map((item) => (
+              <div class="space-y-1">
+                <h2 class="font-medium uppercase font-mono text-xs">{item.label}</h2>
+                <p class="text-gray-600">{item.value}</p>
+              </div>
+            ))
+          }
+        </div>
+      </header>
+    </div>
+
+    <!-- Context -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">CONTEXT</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            This was my capstone project as a UX design student at Swinburne
+            University, run with Penfolds — part of Treasury Wine Estates, where I
+            had previously worked. It ran for about 12 to 13 weeks.
+          </p>
+          <p>
+            It was not a paid engagement, and I want to be straight about that. What
+            it was: a real brief, on a real commercial site, with the Penfolds team
+            sharing their Google Analytics data and sitting through the presentation
+            at the end. The constraints were real even if the contract wasn&apos;t.
+          </p>
+          <p>
+            The scope was three connected surfaces — the global navigation, the
+            mini-cart, and the checkout.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">THE PROBLEM</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            Penfolds sells a large, deep catalogue — wines by range, by region, by
+            variety, by vintage, plus cellar doors, restaurants, events, clubs and a
+            century of brand history. All of it had found its way into the global
+            navigation.
+          </p>
+          <p>
+            The result was a menu where categories expanded into more categories,
+            which expanded again. Every item that went in made the menu more
+            complete and every item made it harder to use.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">Four problems compounded:</span>{' '}
+            cognitive overload from too many simultaneous options; a cluttered
+            presentation working against a brand built on restraint; a structure
+            that fought the mobile devices most people were arriving on; and reduced
+            discoverability, where important pages were harder to find precisely
+            because so much surrounded them.
+          </p>
+          <p>
+            The mini-cart and checkout had the second half of the problem. A
+            multi-step checkout, limited payment options, no visible signals that
+            the transaction was secure, and mandatory account creation before
+            purchase. Each one is a reason to leave a cart behind.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">RESEARCH</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            I ran interviews and surveys with people from a range of backgrounds,
+            looking at how they browse and buy online generally — not only on
+            Penfolds. Alongside that: competitive analysis, published case studies,
+            and the Google Analytics data Penfolds provided for their own site.
+          </p>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">What came back consistently</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>Most people were shopping on mobile devices.</li>
+              <li>
+                Bloated, confusing navigation was actively disliked — and named
+                unprompted.
+              </li>
+              <li>
+                Search matters disproportionately on mobile, and people expect to
+                find it immediately.
+              </li>
+              <li>
+                Payment choice matters. Afterpay, PayPal, Apple Pay, Google Pay, or
+                simply knowing their card is accepted.
+              </li>
+              <li>
+                Poor mobile responsiveness was enough on its own to end a session.
+              </li>
+            </ul>
+          </div>
+          <p>
+            The analytics gave me the other half: which parts of the site people
+            actually used. That turned navigation from a matter of taste into a
+            matter of evidence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Users -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">TARGET USERS</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6">
+          <p class="text-base text-gray-600 leading-relaxed">
+            Two personas came out of the interviews, and I designed against their
+            goals rather than their demographics.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              personas.map((p) => (
+                <div class="bg-gray-100 rounded-xl p-6 space-y-3">
+                  <div>
+                    <h3 class="font-medium">{p.name}</h3>
+                    <p class="text-sm font-mono text-gray-500">{p.trait}</p>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">{p.detail}</p>
+                  <ul class="text-sm text-gray-600 space-y-1 list-disc pl-5">
+                    {p.goals.map((g) => <li>{g}</li>)}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">NAVIGATION</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            I re-mapped and re-prioritised the menu against the analytics rather
+            than against the org chart. Five top-level items survived: Grange, Our
+            Wines, Experiences, Our Story, and Login.
+          </p>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">The decisions</h3>
+            <ul class="space-y-3 list-disc pl-5">
+              <li>
+                <span class="text-gray-900">Grange sits first.</span> It is the wine
+                the brand is known for and the data agreed.
+              </li>
+              <li>
+                <span class="text-gray-900">Our Wines collapsed to four entries</span>{' '}
+                — New Arrivals, Featured, Limited Editions, All Wines. The granular
+                cuts people actually browse by, like variety and region, moved out of
+                the menu.
+              </li>
+              <li>
+                <span class="text-gray-900">
+                  Granular categories became pre-filtered views, linked from the
+                  footer.
+                </span>{' '}
+                This is the part I am happiest with. Region and variety pages did not
+                get deleted — they became filtered states of the wine listing, reached
+                from the footer. The menu got shorter without the site losing a single
+                route.
+              </li>
+              <li>
+                <span class="text-gray-900">Experiences stayed prominent</span> —
+                Cellar Doors, Restaurants, Events — because usage justified it, not
+                because it felt important.
+              </li>
+              <li>
+                <span class="text-gray-900">Our Story kept History, Winemaking and Awards</span>{' '}
+                at top level; sustainability, philosophy and the story of Grange moved
+                to the footer.
+              </li>
+            </ul>
+          </div>
+          <p>
+            The footer stopped being a dumping ground and became the second half of
+            the information architecture — the place for depth, once the menu was
+            handling breadth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pb-12 bg-gray-100 rounded-xl overflow-hidden">
+      <img
+        src="/penfolds/nav-desktop.png"
+        alt="Redesigned Penfolds global navigation with each top-level menu expanded: Grange, Our Wines, Experiences, Our Story and Login"
+        width="1343"
+        height="1600"
+        loading="lazy"
+        decoding="async"
+        class="w-full h-auto"
+      />
+    </div>
+
+    <!-- Mini-cart -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">THE MINI-CART</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            <span class="text-gray-900 font-medium">
+              The existing cart used an X to close the panel and an X to remove an
+              item.
+            </span>{' '}
+            Two identical controls, inches apart, with very different consequences —
+            one dismisses the cart, the other deletes something you chose to buy.
+          </p>
+          <p>
+            I replaced the destructive one with the word <em>Remove</em>. The X now
+            means only one thing. It is a small change and it is the one I would
+            defend hardest: the cost of getting it wrong is a customer losing a
+            selection they had already committed to.
+          </p>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">The rest of the panel</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                Subtotal shown immediately, with shipping explicitly noted as
+                calculated at checkout — no surprise at the final step.
+              </li>
+              <li>
+                A quantity dropdown that starts at one and cannot reach zero.
+                Removing an item is a deliberate act, not an accident of decrementing.
+              </li>
+              <li>
+                Visual hierarchy following how the eye moves: image, then name, then
+                format and price, then quantity, with Remove last — present, but never
+                the first thing found.
+              </li>
+              <li>
+                A prominent checkout button carrying a padlock, and a quieter
+                continue-shopping route for people not finished yet.
+              </li>
+              <li>Suggested products kept, below the decision rather than above it.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/penfolds/minicart-desktop.png"
+          alt="Redesigned mini-cart with subtotal, quantity dropdowns and a Remove text link"
+          width="364"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto"
+        />
+      </div>
+    </div>
+
+    <!-- Checkout -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">CHECKOUT</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            <span class="text-gray-900 font-medium">
+              The significant product decision was removing the requirement to create
+              an account before buying.
+            </span>
+          </p>
+          <p>
+            The business case for forced registration is real: an account captures an
+            email address, supports marketing, and builds a customer profile. It is
+            not an irrational thing to want. But published research on checkout
+            abandonment puts the cost of compelling it at roughly a quarter of
+            would-be purchasers, and a customer who leaves gives you neither the sale
+            nor the email address.
+          </p>
+          <p>
+            So the account became optional, and the newsletter became a checkbox
+            inside the flow. The business still gets the address from people happy to
+            give it, and stops trading sales for the ones who are not.
+          </p>
+          <div class="space-y-3">
+            <h3 class="text-gray-900 font-medium">Supporting decisions</h3>
+            <ul class="space-y-2 list-disc pl-5">
+              <li>
+                Express payment via Apple Pay and PayPal, with room for others.
+                Familiar payment branding does double duty as a trust signal.
+              </li>
+              <li>
+                Fewer fields: address autocomplete instead of a column of inputs,
+                and billing defaulting to the shipping address.
+              </li>
+              <li>
+                A padlock at the point of payment. Most people never look at the
+                browser address bar for the SSL indicator, so the reassurance has to
+                live where the decision is made.
+              </li>
+              <li>
+                A two-column split — inputs on the left, order summary on the right —
+                so what you are buying stays visible while you enter details.
+              </li>
+              <li>
+                Free-shipping threshold surfaced in the summary, and a confirmation
+                page with order number, shipping and payment details.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">MOBILE</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-6 text-base text-gray-600 leading-relaxed">
+          <p>
+            Mobile was not a narrower version of the desktop design. Two decisions
+            diverged deliberately.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">Search moved to the top of the menu.</span>{' '}
+            Interviews were unambiguous that search carries more weight on a phone, so
+            opening the hamburger puts search first, expanding into a dedicated field
+            and button rather than sending people to a separate page.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">The mini-cart overlay disappeared entirely.</span>{' '}
+            On a small screen, an overlay summarising a cart before a separate
+            checkout is a step that costs more than it gives. Tapping the cart goes
+            straight to checkout, with the order summary collapsed behind a
+            show-full-summary control for anyone who wants to verify it. Same
+            information, one less stop.
+          </p>
+          <p>
+            The footer restructured from five columns to two, and the nav headings
+            took extra weight to separate parent from child in a stacked list.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pb-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/penfolds/home-mobile.png"
+          alt="Penfolds mobile homepage"
+          width="393"
+          height="854"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto"
+        />
+      </div>
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/penfolds/nav-mobile.png"
+          alt="Mobile navigation open, with Search elevated above every other item"
+          width="393"
+          height="852"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto"
+        />
+      </div>
+      <div class="bg-gray-100 rounded-xl overflow-hidden">
+        <img
+          src="/penfolds/checkout-mobile.png"
+          alt="Mobile checkout with collapsible order summary and express payment"
+          width="393"
+          height="852"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-auto"
+        />
+      </div>
+    </div>
+
+    <!-- Accessibility -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">ACCESSIBILITY</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            Accessibility was set as a project goal rather than a final pass: colour
+            contrast, touch targets sized for real thumbs, correct labelling, and an
+            information order that still makes sense read aloud by a screen reader.
+          </p>
+          <p>
+            Consistency between desktop and mobile did related work — the same
+            elements in the same relative places, so moving between devices
+            mid-purchase does not mean relearning the interface.
+          </p>
+          <p class="text-gray-900">
+            Honestly: this was specified and designed for, not audited. I did not run
+            it against assistive technology, and I would not claim it as verified.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What happened -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">WHAT HAPPENED</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10 space-y-4 text-base text-gray-600 leading-relaxed">
+          <p>
+            I built interactive prototypes for desktop and mobile in Figma, matching
+            the existing Penfolds design language, and presented the work back to
+            their team with the prototypes shared for them to use.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">
+              Then it stopped. The designs were never implemented.
+            </span>
+          </p>
+          <p>
+            Validation testing was the next step and the project ended before it ran,
+            so I have no usability findings and no conversion numbers. I would rather
+            say that plainly than dress up a prediction as a result.
+          </p>
+          <p>
+            As for why none of it shipped — it was not a verdict on the work. Changes
+            to a site like this move through commercial, brand, legal, technical and
+            regional approval gates, and a redesign of the global navigation touches
+            every one of them. The work was sound and it had no route through the
+            organisation.
+          </p>
+          <p>
+            <span class="text-gray-900 font-medium">That is the part I actually took with me.</span>{' '}
+            I spent eight years in change management before this, and I had watched
+            good proposals die in approval chains from the other side of the table.
+            Penfolds was the first time it happened to something I had designed
+            myself. A design that cannot be adopted is not finished, and adoption is a
+            design problem — it needs a route mapped through the organisation, and
+            stakeholders brought along early enough to have a stake in it.
+          </p>
+          <p>
+            If I ran this again, I would spend less time perfecting the prototype and
+            more time on the smallest shippable slice — the mini-cart X, say — and on
+            who would need to say yes to it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
+        <div class="col-span-1 md:col-span-2">
+          <h2 class="text-sm font-mono">FEEDBACK</h2>
+        </div>
+        <div class="col-span-1 md:col-span-10">
+          <blockquote class="bg-gray-100 rounded-xl p-6 space-y-4">
+            <p class="text-base text-gray-700 leading-relaxed">
+              &ldquo;This is a much cleaner and user-friendly experience through these
+              key areas of the site. The navigation, mini cart, and checkout
+              improvements are fantastic, especially for mobile users. Honestly
+              brilliant work.&rdquo;
+            </p>
+            <footer class="text-sm text-gray-600">
+              <span class="text-gray-900">Grace Burke</span> — Global Website
+              Experience Manager, Penfolds (Treasury Wine Estates)
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- More projects -->
+    <section class="py-12 border-t border-gray-200">
+      <h2 class="text-sm font-mono mb-6">MORE PROJECTS</h2>
+      <div class="flex flex-wrap gap-x-6 gap-y-3">
+        <a
+          href="/gigz"
+          class="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors"
+        >
+          GIGZ →
+        </a>
+        <a
+          href="/convertiq"
+          class="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors"
+        >
+          CONVERTIQ →
+        </a>
+      </div>
+    </section>
+
+    <footer class="py-8 text-sm text-gray-500 font-mono">
+      <p>© {new Date().getFullYear()}</p>
+    </footer>
+  </main>
+</BaseLayout>

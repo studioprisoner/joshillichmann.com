@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectsCarousel, { type Project } from '../components/ProjectsCarousel';
 import TestimonialsRotator, { type Testimonial } from '../components/TestimonialsRotator';
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+  caseStudy?: string;
+}
 
 const projects: Project[] = [
   {
@@ -15,16 +22,17 @@ const projects: Project[] = [
   {
     title: 'ConvertIQ - Turn Your Website Into a Conversion Machine',
     description:
-      'Get data-driven insights and actionable recommendations that were once only available to enterprise companies. Transform your small business website with AI-powered analysis.',
+      'Currently in beta. Get data-driven insights and actionable recommendations that were once only available to enterprise companies. Transform your small business website with AI-powered analysis.',
     image: '/reports.png',
     link: 'https://www.convertiq.cloud',
     caseStudy: '/convertiq',
   },
   {
-    title: 'Penfolds - eCommerce UX Research and Design',
+    title: 'Penfolds - Navigation and Checkout Redesign',
     description:
-      "Dedication towards improving the key functionalities of Penfolds.com's e-commerce platform, resolving user interface hitches for the global routing, mini-cart, and transaction steps, thus achieving its dual objectives: evolving a more navigable browsing interface and streamlining the purchase process to amplify conversion rates.",
+      'Rethinking the global navigation, mini-cart and checkout for Penfolds.com. Research with their analytics, two personas, and a set of product decisions — including removing forced account creation at checkout. A Swinburne capstone with Treasury Wine Estates.',
     image: '/penfolds-mock-1.png',
+    caseStudy: '/penfolds',
   },
   {
     title: 'MChart - Visualising a healthcare landscape',
@@ -78,7 +86,8 @@ const year = new Date().getFullYear();
       <div class="space-y-1">
         <h1 class="text-xl font-medium font-mono">Josh Illichmann</h1>
         <p class="text-gray-600">
-          I&apos;m a Product Designer from Melbourne, Australia and a graduate of{' '}
+          Product designer and design engineer in Melbourne, Australia. I design
+          products and ship the code. Graduate of the{' '}
           <a href="https://swinburne.design/">Swinburne University Design</a> program.
         </p>
       </div>
@@ -100,6 +109,64 @@ const year = new Date().getFullYear();
         </span>
       </div>
 
+    </div>
+
+    <section class="py-8 space-y-6" aria-labelledby="work-heading">
+      <h2 id="work-heading" class="text-sm font-mono uppercase text-gray-500">
+        Selected work
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project, i) => (
+          <article class="group bg-gray-100 rounded-xl overflow-hidden flex flex-col">
+            <div class="aspect-[4/3] overflow-hidden bg-gray-200">
+              <img
+                src={project.image}
+                alt={project.title}
+                width={800}
+                height={600}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              />
+            </div>
+
+            <div class="p-5 md:p-6 space-y-2 flex-1 flex flex-col">
+              <h3 class="text-base font-medium">{project.title}</h3>
+              <p class="text-gray-600 text-sm flex-1">{project.description}</p>
+
+              {(project.caseStudy || project.link) && (
+                <div class="flex flex-wrap gap-x-5 gap-y-2 pt-2">
+                  {project.caseStudy && (
+                    <a
+                      href={project.caseStudy}
+                      class="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors"
+                    >
+                      READ CASE STUDY →
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm font-mono text-gray-800 hover:text-gray-600 transition-colors"
+                    >
+                      VIEW PROJECT →
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <TestimonialsRotator testimonials={testimonials} client:visible />
+
+    <div class="py-8 space-y-4">
+      <h2 class="text-sm font-mono uppercase text-gray-500">Background</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
         <div class="space-y-2">
           <h2 class="font-medium uppercase font-mono">Previously</h2>
@@ -155,10 +222,6 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <ProjectsCarousel projects={projects} client:visible />
-
-    <TestimonialsRotator testimonials={testimonials} client:visible />
-
     <div class="py-12">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
         <div class="col-span-1">
@@ -167,12 +230,18 @@ const year = new Date().getFullYear();
 
         <div class="col-span-1 md:col-span-5 space-y-4">
           <p class="text-gray-600 leading-relaxed text-base">
-            For the past 8 years, I&apos;ve served as a consultant specialising in
-            change management, project management, and business analysis across diverse
-            sectors including telecommunications, FMG, gaming, and government. My
-            expertise centers on digital transformations, focusing on enhancing business
-            performance, strengthening cyber security, and advancing digital analytics
-            initiatives.
+            Product designer and design engineer in Melbourne. I work end to end &mdash;
+            research, interface, and the code that ships it. Most recently{' '}
+            <a href="/gigz">Gigz</a>, an iOS concert journal on the App Store that I built
+            and run solo across five surfaces: the app, the backend, the data pipeline,
+            the admin, and the site. Alongside it,{' '}
+            <a href="/convertiq">ConvertIQ</a>, a conversion analysis platform for small
+            businesses, currently in beta.
+          </p>
+          <p class="text-gray-600 leading-relaxed text-base">
+            Eight years consulting on digital transformations across telecommunications,
+            gaming and government came first. That work taught me what design usually
+            learns late &mdash; the best solution still fails if nobody adopts it.
           </p>
         </div>
 
